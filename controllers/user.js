@@ -1,5 +1,5 @@
 module.exports = function (app) {
-    var Alternative = app.models.alternative;
+    var User = app.models.user;
 
     var controller = {};
 

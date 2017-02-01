@@ -12,7 +12,9 @@ app.use(methodOverride());
 // It hides the technology used by server.
 app.disable("x-powered-by");
 
-load("models")
+load("parameters")
+    .then("security")
+    .then("models")
     .then("controllers")
     .then("routes")
     .into(app);

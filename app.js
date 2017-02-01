@@ -1,7 +1,8 @@
 var app = require("./config/express");
-var properties = require("./config/properties");
+
+const port = app.parameters.infrastructure.port;
 
 // Set port and start server.
-app.listen(properties.port, function() {
-    console.log("Server started on port %d...", properties.port);
+app.listen(port, function() {
+    console.log("Server started on port %d...", port);
 });

@@ -9,4 +9,4 @@ module.exports = function (app) {
         .get(controller.findById)
         .put(controller.save)
         .delete(controller.remove);
-}
+};
