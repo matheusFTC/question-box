@@ -6,7 +6,7 @@ module.exports = function (app) {
     const amount = app.parameters.authentication.amount;
     const duration = app.parameters.authentication.duration;
     
-    var encryption = app.security.encryption;
+    var encryption = app.utils.encryption;
 
     var User = app.models.user;
 

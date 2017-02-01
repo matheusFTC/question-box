@@ -13,7 +13,7 @@ app.use(methodOverride());
 app.disable("x-powered-by");
 
 load("parameters")
-    .then("security")
+    .then("utils")
     .then("models")
     .then("controllers")
     .then("routes")
