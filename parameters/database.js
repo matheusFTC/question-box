@@ -1,9 +1,8 @@
 module.exports = function () {
     return {
-        url: "mongodb://localhost/question-box"
+        url: "mongodb://ds141209.mlab.com:41209/question-box"
         , options: {
-            db: { native_parser: true }
-            , server: { poolSize: 5 }
+            server: { poolSize: 5 }
             , user: "qbuser"
             , pass: "qbpassword"
         }
