@@ -12,7 +12,22 @@ module.exports = function (app) {
     };
 
     controller.findById = function (req, res) {
-
+        Category.findById(req.params._id)
+            .populate("top")
+            .exec(function (err, category) {
+                if (err) {
+                    res.status(404).json({
+                        success: false,
+                        message: err
+                    });
+                } else {
+                    res.status(200).json({
+                        success: true,
+                        message: "Found category.",
+                        record: category
+                    });
+                }
+            });
     };
 
     controller.save = function (req, res) {

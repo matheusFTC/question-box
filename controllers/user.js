@@ -21,7 +21,7 @@ module.exports = function (app) {
             } else {
                 res.status(200).json({
                     success: true,
-                    message: "Found user",
+                    message: "Found user.",
                     record: user
                 });
             }
