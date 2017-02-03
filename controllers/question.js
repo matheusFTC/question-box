@@ -33,7 +33,47 @@ module.exports = function (app) {
     };
 
     controller.save = function (req, res) {
+        let _id = req.params._id;
 
+        let data = {
+            enunciation: req.body.enunciation
+            , alternatives: req.body.alternatives
+            , category: req.body.category
+            , isActive: req.body.isActive
+        };
+
+        if (_id) {
+            Question.findByIdAndUpdate(_id, data, function (err) {
+                if (err) {
+                    res.status(500).json({
+                        success: false,
+                        message: err
+                    });
+                } else {
+                    res.status(201).json({
+                        success: true,
+                        message: "Question updated successfully."
+                    });
+                }
+            });
+        } else {
+            let question = new Question(data);
+
+            question.save(function (err) {
+                if (err) {
+                    res.status(500).json({
+                        success: false,
+                        message: err
+                    });
+                } else {
+                    res.status(201).json({
+                        success: true,
+                        message: "Question created successfully.",
+                        record: question
+                    });
+                }
+            });
+        }
     };
 
     controller.remove = function (req, res) {

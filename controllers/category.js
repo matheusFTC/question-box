@@ -31,7 +31,46 @@ module.exports = function (app) {
     };
 
     controller.save = function (req, res) {
+        let _id = req.params._id;
 
+        let data = {
+            name: req.body.name
+            , top: req.body.top
+            , isActive: req.body.isActive
+        };
+
+        if (_id) {
+            Category.findByIdAndUpdate(_id, data, function (err) {
+                if (err) {
+                    res.status(500).json({
+                        success: false,
+                        message: err
+                    });
+                } else {
+                    res.status(201).json({
+                        success: true,
+                        message: "Category updated successfully."
+                    });
+                }
+            });
+        } else {
+            let category = new Category(data);
+
+            category.save(function (err) {
+                if (err) {
+                    res.status(500).json({
+                        success: false,
+                        message: err
+                    });
+                } else {
+                    res.status(201).json({
+                        success: true,
+                        message: "Category created successfully.",
+                        record: category
+                    });
+                }
+            });
+        }
     };
 
     controller.remove = function (req, res) {
