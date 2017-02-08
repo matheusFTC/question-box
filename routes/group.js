@@ -1,11 +1,11 @@
 module.exports = function (app) {
-    var controller = app.controllers.category;
+    var controller = app.controllers.group;
     
-    app.route("/categories")
+    app.route("/groups")
         .get(controller.findAll)
         .post(controller.save);
 
-    app.route("/categories/:_id")
+    app.route("/groups/:_id")
         .get(controller.findById)
         .put(controller.save)
         .delete(controller.remove);

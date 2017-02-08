@@ -5,6 +5,9 @@ module.exports = function () {
         name: {
             type: String
             , required: true
+            , index: {
+                unique: true
+            }
         },
         isActive: {
             type: Boolean
@@ -13,5 +16,5 @@ module.exports = function () {
         }
     });
 
-    return mongoose.model("Category", schema);
+    return mongoose.model("Group", schema);
 };

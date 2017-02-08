@@ -1,16 +1,16 @@
 module.exports = function (app) {
-    var Category = app.models.category;
+    var Group = app.models.group;
 
     var controller = {};
 
     controller.findAll = function (req, res) {
-        Category.find({}).exec(function (err, categories) {
+        Group.find({}).exec(function (err, categories) {
             res.status(200).json(categories);
         });
     };
 
     controller.findById = function (req, res) {
-        Category.findById(req.params._id).exec(function (err, category) {
+        Group.findById(req.params._id).exec(function (err, group) {
             if (err) {
                 res.status(404).json({
                     success: false,
@@ -19,8 +19,8 @@ module.exports = function (app) {
             } else {
                 res.status(200).json({
                     success: true,
-                    message: "Found category.",
-                    record: category
+                    message: "Found group.",
+                    record: group
                 });
             }
         });
@@ -35,7 +35,7 @@ module.exports = function (app) {
         };
 
         if (_id) {
-            Category.findByIdAndUpdate(_id, data, function (err) {
+            Group.findByIdAndUpdate(_id, data, function (err) {
                 if (err) {
                     res.status(500).json({
                         success: false,
@@ -44,14 +44,14 @@ module.exports = function (app) {
                 } else {
                     res.status(201).json({
                         success: true,
-                        message: "Category updated successfully."
+                        message: "Group updated successfully."
                     });
                 }
             });
         } else {
-            let category = new Category(data);
+            let group = new Group(data);
 
-            category.save(function (err) {
+            group.save(function (err) {
                 if (err) {
                     res.status(500).json({
                         success: false,
@@ -60,8 +60,8 @@ module.exports = function (app) {
                 } else {
                     res.status(201).json({
                         success: true,
-                        message: "Category created successfully.",
-                        record: category
+                        message: "Group created successfully.",
+                        record: group
                     });
                 }
             });
@@ -69,7 +69,7 @@ module.exports = function (app) {
     };
 
     controller.remove = function (req, res) {
-        Category.remove({ "_id": req.params._id }, function (err) {
+        Group.remove({ "_id": req.params._id }, function (err) {
             if (err) {
                 res.status(500).json({
                     success: false,
@@ -78,7 +78,7 @@ module.exports = function (app) {
             } else {
                 res.status(203).json({
                     success: true,
-                    message: "Category removed."
+                    message: "Group removed."
                 });
             }
         });

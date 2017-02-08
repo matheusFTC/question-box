@@ -10,9 +10,9 @@ module.exports = function () {
             type: mongoose.Schema.Types.ObjectId
             , ref: "Alternative"
         }],
-        category: {
+        group: {
             type: mongoose.Schema.Types.ObjectId
-            , ref: "Category"
+            , ref: "Group"
         },
         isActive: {
             type: Boolean
