@@ -6,10 +6,6 @@ module.exports = function () {
             type: String
             , required: true
         },
-        top: {
-            type: mongoose.Schema.Types.ObjectId
-            , ref: "Category"
-        },
         isActive: {
             type: Boolean
             , required: true

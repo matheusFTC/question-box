@@ -4,30 +4,26 @@ module.exports = function (app) {
     var controller = {};
 
     controller.findAll = function (req, res) {
-        Category.find({})
-            .populate("top")
-            .exec(function (err, categories) {
-                res.status(200).json(categories);
-            });
+        Category.find({}).exec(function (err, categories) {
+            res.status(200).json(categories);
+        });
     };
 
     controller.findById = function (req, res) {
-        Category.findById(req.params._id)
-            .populate("top")
-            .exec(function (err, category) {
-                if (err) {
-                    res.status(404).json({
-                        success: false,
-                        message: err
-                    });
-                } else {
-                    res.status(200).json({
-                        success: true,
-                        message: "Found category.",
-                        record: category
-                    });
-                }
-            });
+        Category.findById(req.params._id).exec(function (err, category) {
+            if (err) {
+                res.status(404).json({
+                    success: false,
+                    message: err
+                });
+            } else {
+                res.status(200).json({
+                    success: true,
+                    message: "Found category.",
+                    record: category
+                });
+            }
+        });
     };
 
     controller.save = function (req, res) {
@@ -35,7 +31,6 @@ module.exports = function (app) {
 
         let data = {
             name: req.body.name
-            , top: req.body.top
             , isActive: req.body.isActive
         };
 
