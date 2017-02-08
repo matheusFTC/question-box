@@ -1,13 +1,13 @@
 var mongoose = require("mongoose");
 
-mongoose.set("debug", false);
+mongoose.set("debug", true);
 
 mongoose.connection.on("connected", function () {
-    console.log("[mongoose] Database connected.");
+    console.log("[mongoose] Database connected");
 });
 
 mongoose.connection.on("disconnected", function () {
-    console.log("[mongoose] Database disconnected.");
+    console.log("[mongoose] Database disconnected");
 });
 
 mongoose.connection.on("error", function (err) {

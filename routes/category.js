@@ -4,10 +4,10 @@ module.exports = function (app) {
 
     app.route("/categories")
         .get(controller.findAll)
-        .post(validate, controller.save);
+        .post(controller.save);
 
     app.route("/categories/:_id")
         .get(controller.findById)
-        .put(validate, controller.save)
-        .delete(validate, controller.remove);
+        .put(controller.save)
+        .delete(controller.remove);
 };
