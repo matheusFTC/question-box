@@ -1,10 +1,12 @@
 var bodyParser = require("body-parser");
+var cors = require("cors");
 var express = require("express");
 var load = require("express-load");
 var methodOverride = require("method-override");
 
 var app = express();
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride());

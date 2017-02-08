@@ -19,6 +19,7 @@
   "homepage": "https://github.com/matheusFTC/question-box-server#readme",
   "dependencies": {
     "body-parser": "^1.16.0",
+    "cors": "^2.8.1",
     "crypto": "0.0.3",
     "express": "^4.14.1",
     "express-load": "^1.1.15",
