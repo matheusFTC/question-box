@@ -31,6 +31,7 @@ module.exports = function (app) {
 
         let data = {
             name: req.body.name
+            , description: req.body.description
             , isActive: req.body.isActive
         };
 

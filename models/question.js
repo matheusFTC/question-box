@@ -7,8 +7,13 @@ module.exports = function () {
             , required: true
         },
         alternatives: [{
-            type: mongoose.Schema.Types.ObjectId
-            , ref: "Alternative"
+            answer: {
+                type: String
+                , required: true
+            },
+            isCorrect: {
+                type: Boolean
+            }
         }],
         group: {
             type: mongoose.Schema.Types.ObjectId
