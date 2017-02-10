@@ -38,7 +38,7 @@ module.exports = function (app) {
         let data = {
             enunciation: req.body.enunciation
             , alternatives: req.body.alternatives
-            , category: req.body.category
+            , group: req.body.group
             , isActive: req.body.isActive
         };
 
