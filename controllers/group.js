@@ -4,8 +4,12 @@ module.exports = function (app) {
     var controller = {};
 
     controller.findAll = function (req, res) {
-        Group.find({}).exec(function (err, categories) {
-            res.status(200).json(categories);
+        Group.find(req.query).exec(function (err, groups) {
+            if (err) {
+                res.status(500).json(err);
+            } else {
+                res.status(200).json(groups);
+            }
         });
     };
 

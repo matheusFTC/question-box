@@ -4,11 +4,15 @@ module.exports = function (app) {
     var controller = {};
 
     controller.findAll = function (req, res) {
-        Question.find({})
+        Question.find(req.query)
             .populate("alternatives")
             .populate("category")
             .exec(function (err, questions) {
-                res.status(200).json(questions);
+                if (err) {
+                    res.status(500).json(err);
+                } else {
+                    res.status(200).json(questions);
+                }
             });
     };
 
