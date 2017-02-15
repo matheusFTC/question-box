@@ -1,5 +1,5 @@
 # question-box-server
-Question Box (Server)
+Question Box
 
 ## Getting Started
 
@@ -12,3 +12,12 @@ What things you need to install...
 1. Git (^2.8.1) - https://git-scm.com/
 2. Node.js (^6.9.4) and NPM (^3.10.10) - https://nodejs.org/en/
 3. MongoDB (^3.2.11) - https://www.mongodb.com/
+4. Bower (^1.7.7) - https://bower.io/
+
+### Installing
+
+A step by step
+
+1. git clone https://github.com/matheusFTC/question-box.git
+2. go to into folder and exec npm install && bower install
+3. npm start
