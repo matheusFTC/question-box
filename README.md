@@ -1,4 +1,4 @@
-# question-box-server
+# question-box
 Question Box
 
 ## Getting Started
