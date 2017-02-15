@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="qbApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="assets/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <title>Question Box</title>
+</head>
+
+<body>
+    <ng-view></ng-view>
+
+    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/angular/angular.js"></script>
+    <script src="assets/vendor/angular-route/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="services/group.js"></script>
+    <script src="services/question.js"></script>
+    <script src="controllers/group.js"></script>
+    <script src="controllers/question.js"></script>
+    <script src="routes/group.js"></script>
+    <script src="routes/question.js"></script>
+</body>
+
+</html>

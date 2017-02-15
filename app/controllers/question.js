@@ -37,9 +37,9 @@ module.exports = function (app) {
     };
 
     controller.save = function (req, res) {
-        let _id = req.params._id;
+        var _id = req.params._id;
 
-        let data = {
+        var data = {
             enunciation: req.body.enunciation
             , alternatives: req.body.alternatives
             , group: req.body.group
@@ -61,7 +61,7 @@ module.exports = function (app) {
                 }
             });
         } else {
-            let question = new Question(data);
+            var question = new Question(data);
 
             question.save(function (err) {
                 if (err) {

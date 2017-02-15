@@ -31,9 +31,9 @@ module.exports = function (app) {
     };
 
     controller.save = function (req, res) {
-        let _id = req.params._id;
+        var _id = req.params._id;
 
-        let data = {
+        var data = {
             name: req.body.name
             , description: req.body.description
             , isActive: req.body.isActive
@@ -54,7 +54,7 @@ module.exports = function (app) {
                 }
             });
         } else {
-            let group = new Group(data);
+            var group = new Group(data);
 
             group.save(function (err) {
                 if (err) {

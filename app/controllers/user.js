@@ -29,9 +29,9 @@ module.exports = function (app) {
     };
 
     controller.save = function (req, res) {
-        let _id = req.params._id;
+        var _id = req.params._id;
 
-        let data = {
+        var data = {
             username: req.body.username
             , password: encryption.encrypt(req.body.password)
             , fullname: req.body.fullname
@@ -52,7 +52,7 @@ module.exports = function (app) {
                 }
             });
         } else {
-            let user = new User(data);
+            var user = new User(data);
 
             user.save(function (err) {
                 if (err) {

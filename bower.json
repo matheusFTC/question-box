@@ -1,0 +1,22 @@
+{
+  "name": "question-box-client",
+  "homepage": "https://github.com/matheusFTC/question-box-client",
+  "authors": [
+    "Matheus Filipe T. Chaves <matheus.02468@gmail.com>"
+  ],
+  "description": "Question Box (Client)",
+  "main": "app.js",
+  "license": "MIT",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "assets/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.9",
+    "angular-route": "^1.5.9",
+    "bootstrap": "^3.3.7"
+  }
+}

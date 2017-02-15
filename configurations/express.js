@@ -9,12 +9,13 @@ var app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static("./public"));
 app.use(methodOverride());
 
 // It hides the technology used by server.
 app.disable("x-powered-by");
 
-load("parameters")
+load("parameters", { cwd: 'app' })
     .then("utils")
     .then("models")
     .then("controllers")
