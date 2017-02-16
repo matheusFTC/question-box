@@ -2,7 +2,7 @@
 
 var app = angular.module("qbApp");
 
-app.factory("Group", function ($http, BASE_URL) {
+app.factory("Group", function ($http) {
     return {
         findAll: function () {
             return $http.get("/groups");

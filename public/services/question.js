@@ -2,7 +2,7 @@
 
 var app = angular.module("qbApp");
 
-app.factory("Question", function ($http, BASE_URL) {
+app.factory("Question", function ($http) {
     return {
         
     };
