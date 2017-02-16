@@ -2,11 +2,13 @@
 
 var app = angular.module("qbApp");
 
-app.config(function ($routeProvider) {
-    $routeProvider.when("/", {
-        templateUrl: "views/group.html",
-        controller: "groupController"
-    });
+app.config(function($routeProvider) {
+  $routeProvider.when("/", {
+    templateUrl: "views/group.html",
+    controller: "groupController"
+  });
 
-    $routeProvider.otherwise({ redirectTo: "/" });
+  $routeProvider.otherwise({
+    redirectTo: "/"
+  });
 });
