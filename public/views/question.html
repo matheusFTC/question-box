@@ -2,14 +2,19 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="page-header">
-        <h1>Questions</h1>
+        <h1>Question Box</h1>
       </div>
-      <h2>{{selectedGroup.name}}</h2>
-      <p class="lead">{{selectedGroup.description}}</p>
-      <p>
-        <a class="btn btn-danger" ng-href="#!/">Back</a>
-        <button type="button" class="btn btn-success">Start</button>
-      </p>
+      <h2>{{group.name}}</h2>
+      <div ng-hide="started">
+        <p>{{group.description}}</p>
+        <p>
+          <a class="btn btn-danger" ng-href="#!/">Back</a>
+          <button type="button" class="btn btn-success" ng-click="start()">Start</button>
+        </p>
+      </div>
+      <div ng-show="started">
+        <p class="lead">{{question.order}}. {{question.enunciation}}</p>
+      </div>
     </div>
   </div>
 </div>
