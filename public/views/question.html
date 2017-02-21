@@ -2,18 +2,25 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="page-header">
-        <h1>Question Box</h1>
+        <h1>{{group.name}}</h1>
       </div>
-      <h2>{{group.name}}</h2>
       <div ng-hide="started">
         <p>{{group.description}}</p>
-        <p>
-          <a class="btn btn-danger" ng-href="#!/">Back</a>
-          <button type="button" class="btn btn-success" ng-click="start()">Start</button>
-        </p>
+        <div class="btn-group" role="group">
+          <a class="btn btn-default" ng-href="#!/">Back</a>
+          <button type="button" class="btn btn-default" ng-click="start()">Start</button>
+        </div>
       </div>
       <div ng-show="started">
         <p class="lead">{{question.order}}. {{question.enunciation}}</p>
+        <div class="list-group">
+          <button type="button" class="list-group-item" ng-repeat="alternative in question.alternatives" ng-class="{'active': alternative.isMarcked}" ng-click="mark(alternative)">{{alternative.order}}. {{alternative.answer}}</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default">Previous</button>
+          <button type="button" class="btn btn-default">Review</button>
+          <button type="button" class="btn btn-default">Next</button>
+        </div>
       </div>
     </div>
   </div>
