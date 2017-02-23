@@ -7,7 +7,9 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
   $scope.group;
   $scope.questions;
   $scope.question;
-  $scope.started = false;
+  $scope.currentIndex;
+  $scope.numberOfQuestions;
+  $scope.started;
 
   Group.findById($routeParams._groupId).then(function(response) {
     $scope.group = response.data.record;
@@ -15,36 +17,58 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
 
   Question.findByGroup($routeParams._groupId).then(function(response) {
     $scope.questions = response.data;
-
+    $scope.numberOfQuestions = $scope.questions.length;
+    
     const alphabet = ["A", "B", "C", "D", "E", "F", "G", "I", "J", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Z"];
-
+    
     $scope.questions.forEach(function(question, index) {
       question.order = ++index;
       question.isAnswered = false;
+      question.markedForReview = false;
 
       question.alternatives.forEach(function(alternative, index) {
         alternative.order = alphabet[index];
-        alternative.isMarcked = false;
+        alternative.isMarked = false;
       });
     });
   });
 
-  $scope.getNextQuestion = function() {
-    return $scope.questions.find(function(question) {
-      return question.isAnswered === false;
-    });
-  };
-  
   $scope.start = function() {
-    $scope.started = true;
-    $scope.question = $scope.getNextQuestion();
+    this.started = true;
+    this.toNext();
   };
 
   $scope.mark = function(alternative) {
-    alternative.isMarcked = !alternative.isMarcked;
+    this.question.isAnswered = true;
+
+    alternative.isMarked = !alternative.isMarked;
+  };
+
+  $scope.toPrevious = function() {
+    if (this.currentIndex === undefined || this.currentIndex === null || this.currentIndex === 0) {
+      this.currentIndex = this.questions.length - 1;
+    } else {
+      this.currentIndex--;
+    }
+
+    this.question = this.questions[this.currentIndex];
   };
   
-  $scope.next = function() {
+  $scope.toNext = function() {
+    if (this.currentIndex === undefined || this.currentIndex === null || this.currentIndex === (this.questions.length - 1)) {
+      this.currentIndex = 0;
+    } else {
+      this.currentIndex++;
+    }
+
+    this.question = this.questions[this.currentIndex];
+  };
+  
+  $scope.markForReview = function() {
+    this.question.markedForReview = !this.question.markedForReview;
+  };
+  
+  $scope.finalize = function() {
     
   };
 });

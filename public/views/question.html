@@ -7,19 +7,22 @@
       <div ng-hide="started">
         <p>{{group.description}}</p>
         <div class="btn-group" role="group">
-          <a class="btn btn-default" ng-href="#!/">Back</a>
-          <button type="button" class="btn btn-default" ng-click="start()">Start</button>
+          <a class="btn btn-default" ng-href="#!/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Back</a>
+          <button type="button" class="btn btn-default" ng-click="start()"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Start</button>
         </div>
       </div>
       <div ng-show="started">
-        <p class="lead">{{question.order}}. {{question.enunciation}}</p>
+        <p class="text-right"><b>({{question.order}}/{{numberOfQuestions}})</b></p>
+        <p class="lead" ng-class="{'bg-warning': question.markedForReview}">{{question.order}}. {{question.enunciation}}</p>
         <div class="list-group">
-          <button type="button" class="list-group-item" ng-repeat="alternative in question.alternatives" ng-class="{'active': alternative.isMarcked}" ng-click="mark(alternative)">{{alternative.order}}. {{alternative.answer}}</button>
+          <button type="button" class="list-group-item" ng-repeat="alternative in question.alternatives" ng-class="{'active': alternative.isMarked}" ng-click="mark(alternative)">{{alternative.order}}. {{alternative.answer}}</button>
         </div>
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default">Previous</button>
-          <button type="button" class="btn btn-default">Review</button>
-          <button type="button" class="btn btn-default">Next</button>
+          <a class="btn btn-default" ng-href="#!/"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Exit</a>
+          <button type="button" class="btn btn-default" ng-click="toPrevious()"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Previous</button>
+          <button type="button" class="btn btn-default" ng-click="toNext()"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Next</button>
+          <button type="button" class="btn btn-default" ng-click="markForReview()"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Review</button>
+          <button type="button" class="btn btn-default" ng-click="finalize()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Finalize</button>
         </div>
       </div>
     </div>
