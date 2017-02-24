@@ -18,9 +18,9 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
   Question.findByGroup($routeParams._groupId).then(function(response) {
     $scope.questions = response.data;
     $scope.numberOfQuestions = $scope.questions.length;
-    
+
     const alphabet = ["A", "B", "C", "D", "E", "F", "G", "I", "J", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Z"];
-    
+
     $scope.questions.forEach(function(question, index) {
       question.order = ++index;
       question.isAnswered = false;
@@ -39,8 +39,6 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
   };
 
   $scope.mark = function(alternative) {
-    this.question.isAnswered = true;
-
     alternative.isMarked = !alternative.isMarked;
   };
 
@@ -53,7 +51,7 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
 
     this.question = this.questions[this.currentIndex];
   };
-  
+
   $scope.toNext = function() {
     if (this.currentIndex === undefined || this.currentIndex === null || this.currentIndex === (this.questions.length - 1)) {
       this.currentIndex = 0;
@@ -63,12 +61,22 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
 
     this.question = this.questions[this.currentIndex];
   };
-  
+
   $scope.markForReview = function() {
     this.question.markedForReview = !this.question.markedForReview;
   };
-  
+
   $scope.finalize = function() {
-    
+    this.questions.forEach(function(question, index) {
+      var wasAnswered = false;
+
+      question.alternatives.forEach(function(alternative) {
+        if (alternative.isMarked) {
+          wasAnswered = true;
+        }
+      });
+
+      question.isAnswered = wasAnswered;
+    });
   };
 });
