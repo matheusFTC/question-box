@@ -5,6 +5,18 @@
         <h1>{{group.name}}</h1>
       </div>
       <div ng-hide="started">
+        <div class="jumbotron" ng-show="isAvailableResult">
+          <header>
+            <h2>Resultado do exame:</h2>
+          </header>
+          <p>
+            <br />Questões respondidas: <span class="badge">{{numberOfQuestionsAnswered}}</span>
+            <br />Questões não respondidas: <span class="badge">{{numberOfQuestionsNotAnswered}}</span>
+            <br />Erros: <span class="badge">{{numberOfErrors}}</span>
+            <br />Acertos: <span class="badge">{{numberOfHits}}</span>
+          </p>
+          <p class="text-warning"><small>Você pode fazer o exame quantas vezes quiser. A prática de resolução de questões te ajudará a fixar melhor o conteúdo do exame.</small></p>
+        </div>
         <p>{{group.description}}</p>
         <div class="btn-group" role="group">
           <a class="btn btn-default" ng-href="#!/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Início</a>
@@ -36,17 +48,18 @@
         <h4 class="modal-title" id="finalizeModalTitle">{{group.name}}</h4>
       </div>
       <div class="modal-body">
-        <p>Confira as questões respondidas, não respondidas e marcadas para revisão: </p>
+        <p>Confira as questões respondidas, não respondidas e marcadas para revisão. Caso queira visualizar uma questão, basta clicar no botão com o número da mesma.</p>
         <p style="margin: 40px 0">
-          <button type="button" class="btn btn-sm" ng-repeat="review in questions" ng-class="{'btn-primary': review.isAnswered, 'btn-danger': !review.isAnswered && !review.markedForReview, 'btn-warning': review.markedForReview && !review.isAnswered}" style="margin: 0 2px 2px 0">{{review.order}}</button></p>
-        <p>
+          <button type="button" class="btn btn-sm" data-dismiss="modal" ng-repeat="review in questions" ng-class="{'btn-primary': review.isAnswered, 'btn-danger': !review.isAnswered && !review.markedForReview, 'btn-warning': review.markedForReview}" style="margin: 0 2px 2px 0"
+            ng-click="toQuestion(review.order - 1)">{{review.order}}</button></p>
+        <p class="text-right">
           <span class="label label-primary">Respondida</span>
           <span class="label label-danger">Não respondida</span>
           <span class="label label-warning">Revisar</span>
         </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Finalizar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="checkResult()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Finalizar</button>
       </div>
     </div>
   </div>

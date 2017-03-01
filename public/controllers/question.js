@@ -10,64 +10,81 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
   $scope.currentIndex;
   $scope.numberOfQuestions;
   $scope.started;
+  $scope.numberOfQuestionsAnswered;
+  $scope.numberOfQuestionsNotAnswered;
+  $scope.numberOfErrors;
+  $scope.numberOfHits;
+  $scope.isAvailableResult;
 
-  Group.findById($routeParams._groupId).then(function(response) {
-    $scope.group = response.data.record;
-  });
+  $scope.findGroup = function() {
+    Group.findById($routeParams._groupId).then(function(response) {
+      $scope.group = response.data.record;
+    });
+  };
 
-  Question.findByGroup($routeParams._groupId).then(function(response) {
-    $scope.questions = response.data;
-    $scope.numberOfQuestions = $scope.questions.length;
+  $scope.findQuestions = function() {
+    Question.findByGroup($routeParams._groupId).then(function(response) {
+      $scope.questions = response.data;
+      $scope.numberOfQuestions = $scope.questions.length;
 
-    const alphabet = ["A", "B", "C", "D", "E", "F", "G", "I", "J", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Z"];
+      const alphabet = ["A", "B", "C", "D", "E", "F", "G", "I", "J", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Z"];
 
-    $scope.questions.forEach(function(question, index) {
-      question.order = ++index;
-      question.isAnswered = false;
-      question.markedForReview = false;
+      $scope.questions.forEach(function(question, index) {
+        question.order = ++index;
+        question.isAnswered = false;
+        question.markedForReview = false;
 
-      question.alternatives.forEach(function(alternative, index) {
-        alternative.order = alphabet[index];
-        alternative.isMarked = false;
+        question.alternatives.forEach(function(alternative, index) {
+          alternative.order = alphabet[index];
+          alternative.isMarked = false;
+        });
       });
     });
-  });
+  };
 
   $scope.start = function() {
-    this.started = true;
-    this.toNext();
+    $scope.started = true;
+    $scope.isAvailableResult = false;
+    
+    $scope.reset();
+    $scope.toNext();
   };
 
   $scope.mark = function(alternative) {
     alternative.isMarked = !alternative.isMarked;
   };
 
+  $scope.toQuestion = function(index) {
+    $scope.currentIndex = index;
+    $scope.question = $scope.questions[$scope.currentIndex];
+  };
+
   $scope.toPrevious = function() {
-    if (this.currentIndex === undefined || this.currentIndex === null || this.currentIndex === 0) {
-      this.currentIndex = this.questions.length - 1;
+    if ($scope.currentIndex === undefined || $scope.currentIndex === null || $scope.currentIndex === 0) {
+      $scope.currentIndex = $scope.questions.length - 1;
     } else {
-      this.currentIndex--;
+      $scope.currentIndex--;
     }
 
-    this.question = this.questions[this.currentIndex];
+    $scope.question = $scope.questions[$scope.currentIndex];
   };
 
   $scope.toNext = function() {
-    if (this.currentIndex === undefined || this.currentIndex === null || this.currentIndex === (this.questions.length - 1)) {
-      this.currentIndex = 0;
+    if ($scope.currentIndex === undefined || $scope.currentIndex === null || $scope.currentIndex === ($scope.questions.length - 1)) {
+      $scope.currentIndex = 0;
     } else {
-      this.currentIndex++;
+      $scope.currentIndex++;
     }
 
-    this.question = this.questions[this.currentIndex];
+    $scope.question = $scope.questions[$scope.currentIndex];
   };
 
   $scope.markForReview = function() {
-    this.question.markedForReview = !this.question.markedForReview;
+    $scope.question.markedForReview = !$scope.question.markedForReview;
   };
 
   $scope.finalize = function() {
-    this.questions.forEach(function(question, index) {
+    $scope.questions.forEach(function(question, index) {
       var wasAnswered = false;
 
       question.alternatives.forEach(function(alternative) {
@@ -79,4 +96,49 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
       question.isAnswered = wasAnswered;
     });
   };
+
+  $scope.checkResult = function() {
+    $scope.numberOfQuestionsAnswered = 0;
+    $scope.numberOfQuestionsNotAnswered = 0;
+    $scope.numberOfErrors = 0;
+    $scope.numberOfHits = 0;
+
+    $scope.questions.forEach(function(question, index) {
+      if (question.isAnswered) {
+        $scope.numberOfQuestionsAnswered++;
+
+        var check = question.alternatives.filter(function(alternative) {
+          return alternative.isMarked && !alternative.isCorrect;
+        }).length;
+
+        if (check === 0) {
+          $scope.numberOfHits++;
+        } else {
+          $scope.numberOfErrors++;
+        }
+      } else {
+        $scope.numberOfQuestionsNotAnswered++;
+        $scope.numberOfErrors++;
+      }
+    });
+
+    $scope.started = false;
+    $scope.isAvailableResult = true;
+  };
+
+  $scope.reset = function() {
+    $scope.currentIndex = undefined;
+    
+    $scope.questions.forEach(function(question, index) {
+        question.isAnswered = false;
+        question.markedForReview = false;
+
+        question.alternatives.forEach(function(alternative, index) {
+          alternative.isMarked = false;
+        });
+      });
+  };
+  
+  $scope.findGroup();
+  $scope.findQuestions();
 });
