@@ -4,6 +4,8 @@
       <div class="page-header">
         <h1>Caixa de Questões</h1>
       </div>
+      
+      <!-- group-filter -->
       <form>
         <div class="form-group">
           <div class="input-group">
@@ -14,12 +16,16 @@
           </div>
         </div>
       </form>
+      <!-- /group-filter -->
+      
+      <!-- group-list -->
       <div class="list-group">
         <a class="list-group-item" ng-repeat="group in groups | filter : filter" ng-href="#!/{{group._id}}">
           <h4 class="list-group-item-heading">{{group.name}}</h4>
           <p class="list-group-item-text">{{group.description}}</p>
         </a>
       </div>
+      <!-- /group-list -->
     </div>
   </div>
 </div>

@@ -56,11 +56,6 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
     alternative.isMarked = !alternative.isMarked;
   };
 
-  $scope.toQuestion = function(index) {
-    $scope.currentIndex = index;
-    $scope.question = $scope.questions[$scope.currentIndex];
-  };
-
   $scope.toPrevious = function() {
     if ($scope.currentIndex === undefined || $scope.currentIndex === null || $scope.currentIndex === 0) {
       $scope.currentIndex = $scope.questions.length - 1;

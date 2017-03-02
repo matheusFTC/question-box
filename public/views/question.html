@@ -102,15 +102,7 @@
         <h3 class="modal-title" id="finalizeModalTitle">Deseja realmente finalizar?</h3>
       </div>
       <div class="modal-body">
-        <p>Confira as questões que foram respondidas, as questões não respondidas e as que foram marcadas para revisão. Caso queira visualizar uma questão, basta clicar no botão com o número da mesma.</p>
-        <p style="margin: 40px 0">
-          <button type="button" class="btn btn-sm" data-dismiss="modal" ng-repeat="review in questions" ng-class="{'btn-primary': review.isAnswered, 'btn-danger': !review.isAnswered && !review.markedForReview, 'btn-warning': review.markedForReview}" style="margin: 0 2px 2px 0"
-            ng-click="toQuestion(review.order - 1)">{{review.order}}</button></p>
-        <p class="text-right">
-          <span class="label label-primary">Respondida</span>
-          <span class="label label-danger">Não respondida</span>
-          <span class="label label-warning">Revisar</span>
-        </p>
+        <p>Confira se todas as questões foram respondidas antes de finalizar.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="checkResult()">
