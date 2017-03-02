@@ -21,3 +21,12 @@ A step by step
 1. git clone https://github.com/matheusFTC/question-box.git
 2. go to into folder and exec npm install && bower install
 3. npm start
+
+### Configurations
+
+Go to into folder app/parameters and set the values for:
+
+1. authentication
+2. database
+3. encryption
+4. infrastructure
