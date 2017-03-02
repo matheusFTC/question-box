@@ -9,12 +9,14 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
   $scope.question;
   $scope.currentIndex;
   $scope.numberOfQuestions;
-  $scope.started;
   $scope.numberOfQuestionsAnswered;
   $scope.numberOfQuestionsNotAnswered;
   $scope.numberOfErrors;
   $scope.numberOfHits;
-  $scope.isAvailableResult;
+
+  $scope.showGroupDescription = true;
+  $scope.showQuestions = false;
+  $scope.showResult = false;
 
   $scope.findGroup = function() {
     Group.findById($routeParams._groupId).then(function(response) {
@@ -43,10 +45,10 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
   };
 
   $scope.start = function() {
-    $scope.started = true;
-    $scope.isAvailableResult = false;
-    
-    $scope.reset();
+    $scope.showGroupDescription = false;
+    $scope.showQuestions = true;
+    $scope.showResult = false;
+
     $scope.toNext();
   };
 
@@ -122,23 +124,28 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
       }
     });
 
-    $scope.started = false;
-    $scope.isAvailableResult = true;
+    $scope.showGroupDescription = false;
+    $scope.showQuestions = false;
+    $scope.showResult = true;
   };
 
   $scope.reset = function() {
+    $scope.showQuestions = true;
+    $scope.showResult = false;
     $scope.currentIndex = undefined;
-    
-    $scope.questions.forEach(function(question, index) {
-        question.isAnswered = false;
-        question.markedForReview = false;
 
-        question.alternatives.forEach(function(alternative, index) {
-          alternative.isMarked = false;
-        });
+    $scope.questions.forEach(function(question, index) {
+      question.isAnswered = false;
+      question.markedForReview = false;
+
+      question.alternatives.forEach(function(alternative, index) {
+        alternative.isMarked = false;
       });
+    });
+    
+    $scope.toNext();
   };
-  
+
   $scope.findGroup();
   $scope.findQuestions();
 });
