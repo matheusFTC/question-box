@@ -16,7 +16,7 @@ app.controller("authenticationController", function($rootScope, $scope, $locatio
         .then(function(response) {
           $rootScope.token = response.data.token;
 
-          $location.path("/");
+          $location.path("/administration");
         })
         .catch(function(err) {
           if (err.status === 401) {

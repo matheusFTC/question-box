@@ -1,100 +1,102 @@
-module.exports = function (app) {
-    var Question = app.models.question;
+module.exports = function(app) {
+  var Question = app.models.question;
 
-    var controller = {};
+  var controller = {};
 
-    controller.findAll = function (req, res) {
-        Question.find(req.query)
-            .populate("alternatives")
-            .populate("category")
-            .exec(function (err, questions) {
-                if (err) {
-                    res.status(500).json(err);
-                } else {
-                    res.status(200).json(questions);
-                }
-            });
-    };
-
-    controller.findById = function (req, res) {
-        Question.findById(req.params._id)
-            .populate("alternatives")
-            .populate("category")
-            .exec(function (err, question) {
-                if (err) {
-                    res.status(404).json({
-                        success: false,
-                        message: err
-                    });
-                } else {
-                    res.status(200).json({
-                        success: true,
-                        message: "Found question.",
-                        record: question
-                    });
-                }
-            });
-    };
-
-    controller.save = function (req, res) {
-        var _id = req.params._id;
-
-        var data = {
-            enunciation: req.body.enunciation
-            , alternatives: req.body.alternatives
-            , group: req.body.group
-            , isActive: req.body.isActive
-        };
-
-        if (_id) {
-            Question.findByIdAndUpdate(_id, data, function (err) {
-                if (err) {
-                    res.status(500).json({
-                        success: false,
-                        message: err
-                    });
-                } else {
-                    res.status(201).json({
-                        success: true,
-                        message: "Question updated successfully."
-                    });
-                }
-            });
+  controller.findAll = function(req, res) {
+    Question.find(req.query)
+      .populate("alternatives")
+      .populate("category")
+      .exec(function(err, questions) {
+        if (err) {
+          res.status(500).json(err);
         } else {
-            var question = new Question(data);
-
-            question.save(function (err) {
-                if (err) {
-                    res.status(500).json({
-                        success: false,
-                        message: err
-                    });
-                } else {
-                    res.status(201).json({
-                        success: true,
-                        message: "Question created successfully.",
-                        record: question
-                    });
-                }
-            });
+          res.status(200).json(questions);
         }
+      });
+  };
+
+  controller.findById = function(req, res) {
+    Question.findById(req.params._id)
+      .populate("alternatives")
+      .populate("category")
+      .exec(function(err, question) {
+        if (err) {
+          res.status(404).json({
+            success: false,
+            message: err
+          });
+        } else {
+          res.status(200).json({
+            success: true,
+            message: "Found question.",
+            record: question
+          });
+        }
+      });
+  };
+
+  controller.save = function(req, res) {
+    var _id = req.params._id;
+
+    var data = {
+      enunciation: req.body.enunciation,
+      alternatives: req.body.alternatives,
+      group: req.body.group,
+      isActive: req.body.isActive
     };
 
-    controller.remove = function (req, res) {
-        Question.remove({ "_id": req.params._id }, function (err) {
-            if (err) {
-                res.status(500).json({
-                    success: false,
-                    message: err
-                });
-            } else {
-                res.status(203).json({
-                    success: true,
-                    message: "Question removed."
-                });
-            }
+    if (_id) {
+      Question.findByIdAndUpdate(_id, data, function(err) {
+        if (err) {
+          res.status(500).json({
+            success: false,
+            message: err
+          });
+        } else {
+          res.status(201).json({
+            success: true,
+            message: "Question updated successfully."
+          });
+        }
+      });
+    } else {
+      var question = new Question(data);
+
+      question.save(function(err) {
+        if (err) {
+          res.status(500).json({
+            success: false,
+            message: err
+          });
+        } else {
+          res.status(201).json({
+            success: true,
+            message: "Question created successfully.",
+            record: question
+          });
+        }
+      });
+    }
+  };
+
+  controller.remove = function(req, res) {
+    Question.remove({
+      "_id": req.params._id
+    }, function(err) {
+      if (err) {
+        res.status(500).json({
+          success: false,
+          message: err
         });
-    };
+      } else {
+        res.status(203).json({
+          success: true,
+          message: "Question removed."
+        });
+      }
+    });
+  };
 
-    return controller;
+  return controller;
 };

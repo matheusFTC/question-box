@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/matheusFTC/question-box-server#readme",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.16.0",
     "cors": "^2.8.1",
     "crypto": "0.0.3",

@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var bluebird = require('bluebird');
 
 mongoose.set("debug", false);
 
@@ -14,6 +15,6 @@ mongoose.connection.on("error", function (err) {
     console.log("Database error: " + err);
 });
 
-mongoose.Promise = global.Promise;
+mongoose.Promise = bluebird;
 
 module.exports = mongoose;
