@@ -7,10 +7,21 @@ app.controller("administrationController", function($rootScope, $scope, Group, Q
   $scope.groupsFilter;
   $scope.groups;
   $scope.group;
+  $scope.questionsFilter;
+  $scope.questions;
+  $scope.question;
 
   $scope.findAllGroups = function() {
     Group.findAll().then(function(response) {
       $scope.groups = response.data;
+    });
+  };
+
+  $scope.findQuestionByGroup = function(group) {
+    $scope.group = group;
+    
+    Question.findByGroup(group._id).then(function(response) {
+      $scope.questions = response.data;
     });
   };
 
