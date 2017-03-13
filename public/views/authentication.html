@@ -2,20 +2,21 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <div class="page-header">
-        <h1>Caixa de Questões</h1>
+        <h1>Authentication</h1>
       </div>
-      <div class="alert alert-danger" role="alert" ng-show="message"><strong>Ops!</strong> {{message}}</div>
       <form>
         <div class="form-group">
-          <label for="inputUsername">Usuário</label>
-          <input id="inputUsername" type="text" class="form-control" placeholder="Usuário" ng-model="username">
+          <label for="inputUsername">Username</label>
+          <input id="inputUsername" type="text" class="form-control" placeholder="Username" ng-model="username">
         </div>
         <div class="form-group">
-          <label for="inputPassword">Senha</label>
-          <input id="inputPassword" type="password" class="form-control" placeholder="Senha" ng-model="password">
+          <label for="inputPassword">Password</label>
+          <input id="inputPassword" type="password" class="form-control" placeholder="Password" ng-model="password">
         </div>
         <div class="form-group">
-          <input type="submit" class="btn btn-default" value="Entar" ng-click="authenticate()">
+          <button type="button" class="btn btn-default" ng-click="authenticate()">
+            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login
+          </button>
         </div>
       </form>
     </div>

@@ -4,13 +4,12 @@ var app = angular.module("qbApp");
 
 app.controller("authenticationController", function($rootScope, $scope, $location, Authentication) {
 
-  $scope.message = null;
   $scope.username = null;
   $scope.password = null;
 
   $scope.authenticate = function() {
     if ($scope.username === null || $scope.password === null || $scope.username.trim() === "" || $scope.password.trim() === "") {
-      $scope.message = "Informe o usuário e a senha.";
+      $rootScope.message.error("Enter the username and password.");
     } else {
       Authentication.authenticate($scope.username, $scope.password)
         .then(function(response) {
@@ -19,10 +18,13 @@ app.controller("authenticationController", function($rootScope, $scope, $locatio
           $location.path("/administration");
         })
         .catch(function(err) {
+          $scope.username = null;
+          $scope.password = null;
+
           if (err.status === 401) {
-            $scope.message = "Usuário e/ou senha invalído(s).";
+            $rootScope.message.error("Username or password is invalid!");
           } else {
-            $scope.message = "Não conseguimos realizar a sua autenticação.";
+            $rootScope.message.error("We were unable to authenticate.");
           }
         });
     }

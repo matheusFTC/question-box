@@ -4,11 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <link href="assets/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
-  <title>Caixa de Questões</title>
+  <title>Question Box</title>
 </head>
 
 <body>
@@ -30,6 +31,15 @@
   <script src="routes/administration.js"></script>
   <script src="routes/group.js"></script>
   <script src="routes/question.js"></script>
+  
+  <!-- alert -->
+  <div class="alert alert-dismissible" role="alert" ng-if="message.isSuccess || message.isError" ng-class="{'alert-success': message.isSuccess, 'alert-danger': message.isError}" style="position: fixed; top: 10px; right: 10px; margin-left: 10px;">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="message.close()"><span aria-hidden="true">&times;</span></button>
+    <strong ng-if="message.isSuccess">Success!</strong>
+    <strong ng-if="message.isError">Error!</strong>
+    {{message.text}}
+  </div>
+  <!-- /alert -->
 </body>
 
 </html>

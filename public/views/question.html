@@ -10,10 +10,10 @@
         <p>{{group.description}}</p>
         <div class="btn-group" role="group">
           <a class="btn btn-default" ng-href="#!/">
-            <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Início
+            <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
           </a>
           <button type="button" class="btn btn-default" ng-click="start()">
-            <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Iniciar
+            <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Start
           </button>
         </div>
       </div>
@@ -28,19 +28,19 @@
         </div>
         <div class="btn-group" role="group">
           <a class="btn btn-default" ng-href="#!/">
-            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sair
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Exit
           </a>
           <button type="button" class="btn btn-default" ng-click="toPrevious()">
-            <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Anterior
+            <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Previous
           </button>
           <button type="button" class="btn btn-default" ng-click="toNext()">
-            <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Próxima
+            <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Next
           </button>
           <button type="button" class="btn btn-default" ng-click="markForReview()">
-            <span class="glyphicon glyphicon-check" aria-hidden="true"></span> Revisar
+            <span class="glyphicon glyphicon-check" aria-hidden="true"></span> Review
           </button>
           <button type="button" class="btn btn-default" ng-click="finalize()" data-toggle="modal" data-target="#finalizeModal">
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Finalizar
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Finish
           </button>
         </div>
       </div>
@@ -49,40 +49,40 @@
       <!-- result -->
       <div ng-show="showResult">
         <header>
-          <h2>Seu resultado:</h2>
+          <h2>Your result:</h2>
         </header>
         <div class="row text-center" style="margin: 40px 0">
           <div class="col-md-3">
             <header>
               <h3>{{numberOfQuestionsAnswered}}</h3>
             </header>
-            <p><strong>Questões respondidas</strong></p>
+            <p><strong>Questions answered</strong></p>
           </div>
           <div class="col-md-3">
             <header>
               <h3>{{numberOfQuestionsNotAnswered}}</h3>
             </header>
-            <p><strong>Questões não respondidas</strong></p>
+            <p><strong>Unanswered questions</strong></p>
           </div>
           <div class="col-md-3">
             <header>
               <h3>{{numberOfHits}}</h3>
             </header>
-            <p><strong>Acertos</strong></p>
+            <p><strong>Hits</strong></p>
           </div>
           <div class="col-md-3">
             <header>
               <h3>{{numberOfErrors}}</h3>
             </header>
-            <p><strong>Erros</strong></p>
+            <p><strong>Errors</strong></p>
           </div>
         </div>
         <div class="btn-group" role="group">
           <a class="btn btn-default" ng-href="#!/">
-            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sair
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Exit
           </a>
           <button type="button" class="btn btn-default" ng-click="reset()">
-            <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Refazer
+            <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Remake
           </button>
         </div>
       </div>
@@ -99,14 +99,14 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h3 class="modal-title" id="finalizeModalTitle">Deseja realmente finalizar?</h3>
+        <h3 class="modal-title" id="finalizeModalTitle">Do you really want to finish?</h3>
       </div>
       <div class="modal-body">
-        <p>Confira se todas as questões foram respondidas antes de finalizar.</p>
+        <p>Make sure all questions have been answered before finalizing.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="checkResult()">
-          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Finalizar
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Finish
         </button>
       </div>
     </div>

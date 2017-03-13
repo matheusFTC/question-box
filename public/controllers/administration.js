@@ -4,11 +4,6 @@ var app = angular.module("qbApp");
 
 app.controller("administrationController", function($rootScope, $scope, Group, Question) {
 
-  $scope.message = {
-    success: null,
-    error: null
-  };
-
   $scope.groupsFilter;
   $scope.groups;
   $scope.group;
@@ -34,15 +29,15 @@ app.controller("administrationController", function($rootScope, $scope, Group, Q
   $scope.saveGroup = function() {
     Group.save($scope.group, $rootScope.token)
       .then(function(response) {
-        $scope.message.success = "Grupo salvo com sucesso!";
+        $rootScope.message.success("Group saved successfully!");
 
         $scope.findAllGroups();
       })
       .catch(function(err) {
         if (err.status === 401) {
-          $scope.message.error = "Você não possui autorização para realizar essa ação.";
+          $rootScope.message.unauthorized();
         } else {
-          $scope.message.error = "Não foi possível realizar essa ação.";
+          $rootScope.message.internalServerError();
         }
       });
   };
@@ -50,15 +45,15 @@ app.controller("administrationController", function($rootScope, $scope, Group, Q
   $scope.removeGroup = function(group) {
     Group.remove(group._id, $rootScope.token)
       .then(function(response) {
-        $scope.message.success = "Grupo removido com sucesso!";
+        $rootScope.message.success("Group successfully removed!");
 
         $scope.findAllGroups();
       })
       .catch(function(err) {
         if (err.status === 401) {
-          $scope.message.error = "Você não possui autorização para realizar essa ação.";
+          $rootScope.message.unauthorized();
         } else {
-          $scope.message.error = "Não foi possível realizar essa ação.";
+          $rootScope.message.internalServerError();
         }
       });
   };
