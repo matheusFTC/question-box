@@ -6,7 +6,7 @@ module.exports = function(app) {
   controller.findAll = function(req, res) {
     Question.find(req.query)
       .populate("alternatives")
-      .populate("category")
+      .populate("group")
       .exec(function(err, questions) {
         if (err) {
           res.status(500).json(err);
@@ -19,7 +19,7 @@ module.exports = function(app) {
   controller.findById = function(req, res) {
     Question.findById(req.params._id)
       .populate("alternatives")
-      .populate("category")
+      .populate("group")
       .exec(function(err, question) {
         if (err) {
           res.status(404).json({

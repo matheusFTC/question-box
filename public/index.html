@@ -10,10 +10,30 @@
   <link href="assets/vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
   <title>Question Box</title>
+
+  <style>
+    table.table {
+      margin-top: 20px;
+    }
+    
+    table.table button.btn {
+      margin-top: 5px;
+    }
+    
+    div#message {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 2222;
+      margin-left: 10px;
+    }
+  </style>
 </head>
 
 <body>
   <ng-view></ng-view>
+
+  <ng-include src="'views/message.html'"></ng-include>
 
   <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -31,15 +51,6 @@
   <script src="routes/administration.js"></script>
   <script src="routes/group.js"></script>
   <script src="routes/question.js"></script>
-  
-  <!-- alert -->
-  <div class="alert alert-dismissible" role="alert" ng-if="message.isSuccess || message.isError" ng-class="{'alert-success': message.isSuccess, 'alert-danger': message.isError}" style="position: fixed; top: 10px; right: 10px; margin-left: 10px;">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="message.close()"><span aria-hidden="true">&times;</span></button>
-    <strong ng-if="message.isSuccess">Success!</strong>
-    <strong ng-if="message.isError">Error!</strong>
-    {{message.text}}
-  </div>
-  <!-- /alert -->
 </body>
 
 </html>
