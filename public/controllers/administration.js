@@ -125,9 +125,40 @@ app.controller("administrationController", function($rootScope, $scope, Group, Q
       });
   };
 
+  /* Alternatives */
+
+  $scope.alternativesFilter;
+  $scope.alternatives;
+  $scope.alternative;
+
+  $scope.showAlternatives = function(alternatives) {
+    $scope.alternatives = alternatives;
+  };
+
+  $scope.setAlternative = function(alternative) {
+    $scope.alternative = alternative;
+  };
+
+  $scope.newAlternative = function() {
+    $scope.alternative = {};
+
+    $scope.alternative.answer = "";
+    $scope.alternative.isCorrect = false;
+  };
+
+  $scope.saveQuestion = function() {
+
+  };
+
+  $scope.removeQuestion = function(question) {
+
+  };
+
   $scope.cleanDetail = function() {
     $scope.questions = null;
     $scope.question = null;
+    $scope.alternatives = null;
+    $scope.alternative = null;
   };
 
   /* Init */
