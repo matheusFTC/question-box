@@ -19,7 +19,7 @@ app.controller("administrationController", function($rootScope, $scope, Group, Q
   $scope.setGroup = function(group) {
     $scope.group = group;
 
-    $scope.cleanDetail();
+    $scope.cleanGroupsChildren();
   };
 
   $scope.newGroup = function() {
@@ -28,12 +28,14 @@ app.controller("administrationController", function($rootScope, $scope, Group, Q
     $scope.group.name = "";
     $scope.group.description = "";
     $scope.group.isActive = true;
+    
+    $scope.cleanGroupsChildren();
   };
 
   $scope.saveGroup = function() {
     Group.save($scope.group, $rootScope.token)
       .then(function(response) {
-        $scope.cleanDetail();
+        $scope.cleanGroupsChildren();
 
         $rootScope.message.success("Group saved successfully!");
 
@@ -51,7 +53,7 @@ app.controller("administrationController", function($rootScope, $scope, Group, Q
   $scope.removeGroup = function(group) {
     Group.remove(group._id, $rootScope.token)
       .then(function(response) {
-        $scope.cleanDetail();
+        $scope.cleanGroupsChildren();
 
         $rootScope.message.success("Group successfully removed!");
 
@@ -82,6 +84,8 @@ app.controller("administrationController", function($rootScope, $scope, Group, Q
 
   $scope.setQuestion = function(question) {
     $scope.question = question;
+
+    $scope.cleanQuestionsChildren();
   };
 
   $scope.newQuestion = function() {
@@ -91,11 +95,15 @@ app.controller("administrationController", function($rootScope, $scope, Group, Q
     $scope.question.alternatives = [];
     $scope.question.group = $scope.group._id;
     $scope.question.isActive = true;
+    
+    $scope.cleanQuestionsChildren();
   };
 
   $scope.saveQuestion = function() {
     Question.save($scope.question, $scope.token)
       .then(function(response) {
+        $scope.cleanQuestionsChildren();
+
         $rootScope.message.success("Question saved successfully!");
 
         $scope.findQuestionByGroup($scope.group);
@@ -112,6 +120,8 @@ app.controller("administrationController", function($rootScope, $scope, Group, Q
   $scope.removeQuestion = function(question) {
     Question.remove(question._id, $rootScope.token)
       .then(function(response) {
+        $scope.cleanQuestionsChildren();
+
         $rootScope.message.success("Question successfully removed!");
 
         $scope.findQuestionByGroup($scope.group);
@@ -131,8 +141,9 @@ app.controller("administrationController", function($rootScope, $scope, Group, Q
   $scope.alternatives;
   $scope.alternative;
 
-  $scope.showAlternatives = function(alternatives) {
-    $scope.alternatives = alternatives;
+  $scope.showAlternatives = function(question) {
+    $scope.question = question;
+    $scope.alternatives = question.alternatives;
   };
 
   $scope.setAlternative = function(alternative) {
@@ -146,17 +157,22 @@ app.controller("administrationController", function($rootScope, $scope, Group, Q
     $scope.alternative.isCorrect = false;
   };
 
-  $scope.saveQuestion = function() {
+  $scope.saveAlternative = function() {
 
   };
 
-  $scope.removeQuestion = function(question) {
+  $scope.removeAlternative = function(alternative) {
 
   };
 
-  $scope.cleanDetail = function() {
+  $scope.cleanGroupsChildren = function() {
     $scope.questions = null;
     $scope.question = null;
+
+    $scope.cleanQuestionsChildren();
+  };
+
+  $scope.cleanQuestionsChildren = function() {
     $scope.alternatives = null;
     $scope.alternative = null;
   };
