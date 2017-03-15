@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var bluebird = require('bluebird');
+var bluebird = require("bluebird");
 
 mongoose.set("debug", false);
 
