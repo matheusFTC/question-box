@@ -18,31 +18,27 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
   $scope.showQuestions = false;
   $scope.showResult = false;
 
-  $scope.findGroup = function() {
-    Group.findById($routeParams._groupId).then(function(response) {
-      $scope.group = response.data.record;
-    });
-  };
+  Group.findById($routeParams._groupId).then(function(response) {
+    $scope.group = response.data.record;
+  });
 
-  $scope.findQuestions = function() {
-    Question.findByGroup($routeParams._groupId).then(function(response) {
-      $scope.questions = response.data;
-      $scope.numberOfQuestions = $scope.questions.length;
+  Question.findByGroup($routeParams._groupId).then(function(response) {
+    $scope.questions = response.data;
+    $scope.numberOfQuestions = $scope.questions.length;
 
-      const alphabet = ["A", "B", "C", "D", "E", "F", "G", "I", "J", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Z"];
+    const alphabet = ["A", "B", "C", "D", "E", "F", "G", "I", "J", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Z"];
 
-      $scope.questions.forEach(function(question, index) {
-        question.order = ++index;
-        question.isAnswered = false;
-        question.markedForReview = false;
+    $scope.questions.forEach(function(question, index) {
+      question.order = ++index;
+      question.isAnswered = false;
+      question.markedForReview = false;
 
-        question.alternatives.forEach(function(alternative, index) {
-          alternative.order = alphabet[index];
-          alternative.isMarked = false;
-        });
+      question.alternatives.forEach(function(alternative, index) {
+        alternative.order = alphabet[index];
+        alternative.isMarked = false;
       });
     });
-  };
+  });
 
   $scope.start = function() {
     $scope.showGroupDescription = false;
@@ -137,10 +133,8 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
         alternative.isMarked = false;
       });
     });
-    
+
     $scope.toNext();
   };
 
-  $scope.findGroup();
-  $scope.findQuestions();
 });
