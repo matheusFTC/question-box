@@ -44,13 +44,13 @@ app.controller("administrationAlternativeController", function($scope, $routePar
   };
 
   $scope.save = function() {
-    $scope.question.alternatives.push($scope.alternative);
+    if (!$scope.alternative._id) $scope.question.alternatives.push($scope.alternative);
 
     $scope.process("Alternative saved successfully!");
   };
 
   $scope.remove = function(index) {
-    $scope.question.alternatives.splice(index, index);
+    $scope.question.alternatives.splice(index, ++index);
 
     $scope.process("Alternative successfully removed!");
   };

@@ -4,8 +4,11 @@
       <div class="page-header">
         <h1>Administration</h1>
       </div>
-
       <h2>Questions</h2>
+      <ol class="breadcrumb">
+        <li><a ng-href="#!/administration/groups">Groups</a></li>
+        <li class="active">Questions</li>
+      </ol>
       <h3>{{group.name}}</h3>
       <div class="row">
         <div class="col-md-2" style="margin-top: 20px">
@@ -16,7 +19,7 @@
           </div>
         </div>
         <div class="col-md-10" style="margin-top: 20px">
-          <!-- question-filter -->
+          <!-- filter -->
           <form>
             <div class="form-group">
               <div class="input-group">
@@ -27,10 +30,10 @@
               </div>
             </div>
           </form>
-          <!-- /question-filter -->
+          <!-- /filter -->
         </div>
       </div>
-      <!-- question-list -->
+      <!-- list -->
       <table class="table">
         <thead>
           <tr>
@@ -65,12 +68,13 @@
           </tr>
         </tbody>
       </table>
-      <!-- /question-list -->
+      <!-- /list -->
 
     </div>
   </div>
 </div>
 
+<!-- modal -->
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -101,3 +105,4 @@
     </div>
   </div>
 </div>
+<!-- /modal -->
