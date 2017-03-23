@@ -46,7 +46,7 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
           $scope.message.error("Group not found.");
           break;
         case 500:
-          $scope.message.error("Something went wrong, try again...");
+          $scope.message.error("Group not loaded.");
           break;
       }
     });
@@ -147,5 +147,4 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
 
     $scope.toNext();
   };
-
 });

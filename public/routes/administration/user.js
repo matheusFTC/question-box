@@ -4,9 +4,9 @@ var app = angular.module("qbApp");
 
 app.config(function($routeProvider) {
 
-  $routeProvider.when("/administration/groups/:_groupId/questions/:_questionId/alternatives", {
-    templateUrl: "views/administration/alternative.html",
-    controller: "administrationAlternativeController",
+  $routeProvider.when("/administration/users", {
+    templateUrl: "views/administration/user.html",
+    controller: "administrationUserController",
     resolve: {
       validation: function($rootScope, $location) {
         if (!$rootScope.token) $location.path("/authentication");

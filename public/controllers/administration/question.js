@@ -53,7 +53,7 @@ app.controller("administrationQuestionController", function($scope, $routeParams
   $scope.remove = function(question) {
     Question.remove(question._id, $scope.token)
       .then(function(response) {
-        $scope.message.success("Question successfully removed!");
+        $scope.message.success("Question removed successfully!");
 
         $scope.findByGroup($scope.group);
       })

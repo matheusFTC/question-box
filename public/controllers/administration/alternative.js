@@ -10,7 +10,7 @@ app.controller("administrationAlternativeController", function($scope, $routePar
 
   $scope.load = function() {
     Question.findById($routeParams._questionId).then(function(response) {
-      $scope.question = response.data.record;
+      $scope.question = response.data;
 
       if (!$scope.question.alternatives) $scope.question.alternatives = [];
     });
@@ -52,7 +52,7 @@ app.controller("administrationAlternativeController", function($scope, $routePar
   $scope.remove = function(index) {
     $scope.question.alternatives.splice(index, ++index);
 
-    $scope.process("Alternative successfully removed!");
+    $scope.process("Alternative removed successfully!");
   };
 
   $scope.load();

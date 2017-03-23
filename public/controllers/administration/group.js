@@ -45,7 +45,7 @@ app.controller("administrationGroupController", function($scope, Group) {
   $scope.remove = function(group) {
     Group.remove(group._id, $scope.token)
       .then(function(response) {
-        $scope.message.success("Group successfully removed!");
+        $scope.message.success("Group removed successfully!");
 
         $scope.findAll();
       })
