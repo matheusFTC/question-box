@@ -16,16 +16,15 @@ module.exports = function(app) {
   controller.findById = function(req, res) {
     Group.findById(req.params._id).exec(function(err, group) {
       if (err) {
-        res.status(404).json({
-          success: false,
-          message: err
-        });
+        res.status(500).json(err);
       } else {
-        res.status(200).json({
-          success: true,
-          message: "Found group.",
-          record: group
-        });
+        if (group) {
+          res.status(200).json(group);
+        } else {
+          res.status(404).json({
+            message: "Group not found."
+          });
+        }
       }
     });
   };
@@ -42,13 +41,9 @@ module.exports = function(app) {
     if (_id) {
       Group.findByIdAndUpdate(_id, data, function(err) {
         if (err) {
-          res.status(500).json({
-            success: false,
-            message: err
-          });
+          res.status(500).json(err);
         } else {
           res.status(201).json({
-            success: true,
             message: "Group updated successfully."
           });
         }
@@ -58,16 +53,9 @@ module.exports = function(app) {
 
       group.save(function(err) {
         if (err) {
-          res.status(500).json({
-            success: false,
-            message: err
-          });
+          res.status(500).json(err);
         } else {
-          res.status(201).json({
-            success: true,
-            message: "Group created successfully.",
-            record: group
-          });
+          res.status(201).json(group);
         }
       });
     }
@@ -78,13 +66,9 @@ module.exports = function(app) {
       "_id": req.params._id
     }, function(err) {
       if (err) {
-        res.status(500).json({
-          success: false,
-          message: err
-        });
+        res.status(500).json(err);
       } else {
         res.status(203).json({
-          success: true,
           message: "Group removed."
         });
       }

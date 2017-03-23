@@ -2,7 +2,15 @@
 
 var app = angular.module("qbApp", ["ngRoute"]);
 
+app.config(function($routeProvider) {
+
+  $routeProvider.otherwise({
+    redirectTo: "/"
+  });
+});
+
 app.run(function($rootScope) {
+  
   $rootScope.message = {
     text: null,
     isSuccess: false,

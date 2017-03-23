@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
-        <h1>{{group.name}}</h1>
+        <h1>{{group.name || 'Something went wrong, try again...'}}</h1>
       </div>
 
       <!-- group-description -->
@@ -12,7 +12,7 @@
           <a class="btn btn-default" ng-href="#!/">
             <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
           </a>
-          <button type="button" class="btn btn-default" ng-click="start()">
+          <button type="button" class="btn btn-default" ng-if="group && questions" ng-click="start()">
             <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Start
           </button>
         </div>

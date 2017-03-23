@@ -10,7 +10,7 @@ app.controller("administrationQuestionController", function($scope, $routeParams
   $scope.question;
   
   Group.findById($routeParams._groupId).then(function(response) {
-    $scope.group = response.data.record;
+    $scope.group = response.data;
     
     $scope.findByGroup();
   });

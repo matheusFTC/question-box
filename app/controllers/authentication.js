@@ -43,7 +43,7 @@ module.exports = function(app) {
     res.status(401);
 
     var token = req.body.token || req.query.token || req.headers["x-access-token"];
-    
+
     if (token) {
       try {
         var decoded = jwt.decode(token, secret);

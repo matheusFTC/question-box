@@ -18,27 +18,38 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
   $scope.showQuestions = false;
   $scope.showResult = false;
 
-  Group.findById($routeParams._groupId).then(function(response) {
-    $scope.group = response.data.record;
-  });
+  Group.findById($routeParams._groupId)
+    .then(function(response) {
+      $scope.group = response.data;
 
-  Question.findByGroup($routeParams._groupId).then(function(response) {
-    $scope.questions = response.data;
-    $scope.numberOfQuestions = $scope.questions.length;
+      Question.findByGroup($scope.group._id).then(function(response) {
+        $scope.questions = response.data;
+        $scope.numberOfQuestions = $scope.questions.length;
 
-    const alphabet = ["A", "B", "C", "D", "E", "F", "G", "I", "J", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Z"];
+        const alphabet = ["A", "B", "C", "D", "E", "F", "G", "I", "J", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Z"];
 
-    $scope.questions.forEach(function(question, index) {
-      question.order = ++index;
-      question.isAnswered = false;
-      question.markedForReview = false;
+        $scope.questions.forEach(function(question, index) {
+          question.order = ++index;
+          question.isAnswered = false;
+          question.markedForReview = false;
 
-      question.alternatives.forEach(function(alternative, index) {
-        alternative.order = alphabet[index];
-        alternative.isMarked = false;
+          question.alternatives.forEach(function(alternative, index) {
+            alternative.order = alphabet[index];
+            alternative.isMarked = false;
+          });
+        });
       });
+    })
+    .catch(function(err) {
+      switch (err.status) {
+        case 404:
+          $scope.message.error("Group not found.");
+          break;
+        case 500:
+          $scope.message.error("Something went wrong, try again...");
+          break;
+      }
     });
-  });
 
   $scope.start = function() {
     $scope.showGroupDescription = false;

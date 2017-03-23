@@ -22,16 +22,15 @@ module.exports = function(app) {
       .populate("group")
       .exec(function(err, question) {
         if (err) {
-          res.status(404).json({
-            success: false,
-            message: err
-          });
+          res.status(500).json(err);
         } else {
-          res.status(200).json({
-            success: true,
-            message: "Found question.",
-            record: question
-          });
+          if (question) {
+            res.status(200).json(question);
+          } else {
+            res.status(404).json({
+              message: "Question not found."
+            });
+          }
         }
       });
   };
