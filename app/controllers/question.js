@@ -48,13 +48,9 @@ module.exports = function(app) {
     if (_id) {
       Question.findByIdAndUpdate(_id, data, function(err) {
         if (err) {
-          res.status(500).json({
-            success: false,
-            message: err
-          });
+          res.status(500).json(err);
         } else {
           res.status(201).json({
-            success: true,
             message: "Question updated successfully."
           });
         }
@@ -64,16 +60,9 @@ module.exports = function(app) {
 
       question.save(function(err) {
         if (err) {
-          res.status(500).json({
-            success: false,
-            message: err
-          });
+          res.status(500).json(err);
         } else {
-          res.status(201).json({
-            success: true,
-            message: "Question created successfully.",
-            record: question
-          });
+          res.status(201).json(question);
         }
       });
     }
@@ -84,13 +73,9 @@ module.exports = function(app) {
       "_id": req.params._id
     }, function(err) {
       if (err) {
-        res.status(500).json({
-          success: false,
-          message: err
-        });
+        res.status(500).json(err);
       } else {
         res.status(203).json({
-          success: true,
           message: "Question removed."
         });
       }

@@ -26,13 +26,11 @@ module.exports = function(app) {
         }, secret);
 
         res.status(200).json({
-          success: true,
           token: token,
           expires: expires
         });
       } else {
         res.status(401).json({
-          success: false,
           message: "Unauthorized."
         });
       }
@@ -61,7 +59,6 @@ module.exports = function(app) {
               next();
             } else {
               res.json({
-                success: false,
                 message: "Unauthorized."
               });
             }
@@ -69,13 +66,11 @@ module.exports = function(app) {
         }
       } catch (err) {
         res.json({
-          success: false,
           message: "Invalid token."
         });
       }
     } else {
       res.json({
-        success: false,
         message: "No token provided."
       });
     }

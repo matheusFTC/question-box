@@ -14,16 +14,15 @@ module.exports = function(app) {
   controller.findById = function(req, res) {
     User.findById(req.params._id, function(err, user) {
       if (err) {
-        res.status(404).json({
-          success: false,
-          message: err
-        });
+        res.status(500).json(err);
       } else {
-        res.status(200).json({
-          success: true,
-          message: "Found user.",
-          record: user
-        });
+        if (user) {
+          res.status(200).json(user);
+        } else {
+          res.status(404).json({
+            message: "User not found."
+          });
+        }
       }
     });
   };
@@ -40,10 +39,7 @@ module.exports = function(app) {
     if (_id) {
       User.findByIdAndUpdate(_id, data, function(err) {
         if (err) {
-          res.status(500).json({
-            success: false,
-            message: err
-          });
+          res.status(500).json(err);
         } else {
           res.status(201).json({
             success: true,
@@ -56,16 +52,9 @@ module.exports = function(app) {
 
       user.save(function(err) {
         if (err) {
-          res.status(500).json({
-            success: false,
-            message: err
-          });
+          res.status(500).json(err);
         } else {
-          res.status(201).json({
-            success: true,
-            message: "User created successfully.",
-            record: user
-          });
+          res.status(201).json(user);
         }
       });
     }
@@ -76,13 +65,9 @@ module.exports = function(app) {
       "_id": req.params._id
     }, function(err) {
       if (err) {
-        res.status(500).json({
-          success: false,
-          message: err
-        });
+        res.status(500).json(err);
       } else {
         res.status(203).json({
-          success: true,
           message: "User removed."
         });
       }

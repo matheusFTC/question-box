@@ -1,23 +1,23 @@
 var mongoose = require("mongoose");
 
-module.exports = function () {
-    var schema = mongoose.Schema({
-        username: {
-            type: String
-            , required: true
-            , index: {
-                unique: true
-            }
-        },
-        password: {
-            type: String
-            , required: true
-        },
-        fullname: {
-            type: String
-            , required: true
-        }
-    });
+module.exports = function() {
+  var schema = mongoose.Schema({
+    username: {
+      type: String,
+      required: true,
+      index: {
+        unique: true
+      }
+    },
+    password: {
+      type: String,
+      required: true
+    },
+    fullname: {
+      type: String,
+      required: true
+    }
+  });
 
-    return mongoose.model("User", schema);
+  return mongoose.model("User", schema);
 };
