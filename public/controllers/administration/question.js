@@ -28,7 +28,7 @@ app.controller("administrationQuestionController", function($scope, $routeParams
   $scope.new = function() {
     $scope.question = {};
 
-    $scope.question.enunciation = "";
+    $scope.question.enunciation = null;
     $scope.question.alternatives = [];
     $scope.question.group = $scope.group._id;
     $scope.question.isActive = true;

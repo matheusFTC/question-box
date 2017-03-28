@@ -23,7 +23,7 @@ app.controller("administrationAlternativeController", function($scope, $routePar
   $scope.new = function() {
     $scope.alternative = {};
 
-    $scope.alternative.answer = "";
+    $scope.alternative.answer = null;
     $scope.alternative.isCorrect = false;
   };
 

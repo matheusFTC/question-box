@@ -86,8 +86,8 @@
       </div>
       <div class="modal-body">
         <form>
-          <div class="form-group">
-            <label for="inputEnunciation">Enunciation</label>
+          <div class="form-group" ng-class="{'has-error': !question.enunciation}">
+            <label class="control-label" for="inputEnunciation">Enunciation</label>
             <textarea class="form-control" rows="6" id="inputEnunciation" placeholder="Enunciation" ng-model="question.enunciation"></textarea>
           </div>
           <div class="checkbox">
@@ -98,7 +98,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="save()">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="save()" ng-disabled="!question.enunciation">
           <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
         </button>
       </div>

@@ -21,8 +21,8 @@ app.controller("administrationGroupController", function($scope, Group) {
   $scope.new = function() {
     $scope.group = {};
 
-    $scope.group.name = "";
-    $scope.group.description = "";
+    $scope.group.name = null;
+    $scope.group.description = null;
     $scope.group.isActive = true;
   };
 

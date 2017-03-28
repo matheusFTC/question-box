@@ -21,9 +21,9 @@ app.controller("administrationUserController", function($scope, User) {
   $scope.new = function() {
     $scope.user = {};
 
-    $scope.user.username = "";
-    $scope.user.password = "";
-    $scope.user.fullname = "";
+    $scope.user.username = null;
+    $scope.user.password = null;
+    $scope.user.fullname = null;
   };
   
   $scope.save = function() {

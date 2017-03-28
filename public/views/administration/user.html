@@ -82,22 +82,22 @@
       </div>
       <div class="modal-body">
         <form>
-          <div class="form-group">
-            <label for="inputUsername">Username</label>
+          <div class="form-group" ng-class="{'has-error': !user.username}">
+            <label class="control-label" for="inputUsername">Username</label>
             <input type="text" class="form-control" id="inputUsername" placeholder="Username" ng-model="user.username">
           </div>
-          <div class="form-group">
-            <label for="inputPassword">Password</label>
+          <div class="form-group" ng-class="{'has-error': !user.password}">
+            <label class="control-label" for="inputPassword">Password</label>
             <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="user.password">
           </div>
-          <div class="form-group">
-            <label for="inputFullname">Fullname</label>
+          <div class="form-group" ng-class="{'has-error': !user.fullname}">
+            <label class="control-label" for="inputFullname">Fullname</label>
             <input type="text" class="form-control" id="inputFullname" placeholder="Fullname" ng-model="user.fullname">
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="save()">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="save()" ng-disabled="!user.username || !user.password || !user.fullname">
           <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
         </button>
       </div>

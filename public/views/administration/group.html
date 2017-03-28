@@ -89,12 +89,12 @@
       </div>
       <div class="modal-body">
         <form>
-          <div class="form-group">
-            <label for="inputName">Name</label>
+          <div class="form-group" ng-class="{'has-error': !group.name}">
+            <label class="control-label" for="inputName">Name</label>
             <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="group.name">
           </div>
-          <div class="form-group">
-            <label for="inputDescription">Description</label>
+          <div class="form-group" ng-class="{'has-error': !group.description}">
+            <label class="control-label" for="inputDescription">Description</label>
             <textarea class="form-control" rows="6" id="inputDescription" placeholder="Description" ng-model="group.description"></textarea>
           </div>
           <div class="checkbox">
@@ -105,7 +105,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="save()">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="save()" ng-disabled="!group.name || !group.description">
           <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
         </button>
       </div>
