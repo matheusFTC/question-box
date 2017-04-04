@@ -2,8 +2,10 @@
 
 var app = angular.module("qbApp");
 
-app.controller("administrationQuestionController", function($scope, $routeParams, Group, Question) {
+app.controller("administrationQuestionController", function($scope, $cookies, $routeParams, Group, Question) {
 
+  var token = $cookies.get("token");
+  
   $scope.filter;
   $scope.group;
   $scope.questions;
@@ -35,7 +37,7 @@ app.controller("administrationQuestionController", function($scope, $routeParams
   };
 
   $scope.save = function() {
-    Question.save($scope.question, $scope.token)
+    Question.save($scope.question, token)
       .then(function(response) {
         $scope.message.success("Question saved successfully!");
 
@@ -51,7 +53,7 @@ app.controller("administrationQuestionController", function($scope, $routeParams
   };
 
   $scope.remove = function(question) {
-    Question.remove(question._id, $scope.token)
+    Question.remove(question._id, token)
       .then(function(response) {
         $scope.message.success("Question removed successfully!");
 

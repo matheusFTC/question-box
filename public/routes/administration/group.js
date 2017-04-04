@@ -9,8 +9,8 @@ app.config(function($routeProvider) {
       templateUrl: "views/administration/group.html",
       controller: "administrationGroupController",
       resolve: {
-        validation: function($rootScope, $location) {
-          if (!$rootScope.token) $location.path("/authentication");
+        validation: function($cookies, $location) {
+          if (!$cookies.get("token")) $location.path("/authentication");
         }
       }
     })

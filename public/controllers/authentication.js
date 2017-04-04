@@ -2,7 +2,7 @@
 
 var app = angular.module("qbApp");
 
-app.controller("authenticationController", function($rootScope, $scope, $location, Authentication) {
+app.controller("authenticationController", function($rootScope, $scope, $cookies, $location, Authentication) {
 
   $scope.username = null;
   $scope.password = null;
@@ -13,7 +13,7 @@ app.controller("authenticationController", function($rootScope, $scope, $locatio
     } else {
       Authentication.authenticate($scope.username, $scope.password)
         .then(function(response) {
-          $rootScope.token = response.data.token;
+          $cookies.put("token", response.data.token);
 
           $location.path("/administration/groups");
         })

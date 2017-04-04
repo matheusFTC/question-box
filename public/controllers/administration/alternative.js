@@ -2,8 +2,10 @@
 
 var app = angular.module("qbApp");
 
-app.controller("administrationAlternativeController", function($scope, $routeParams, Question) {
+app.controller("administrationAlternativeController", function($scope, $cookies, $routeParams, Question) {
 
+  var token = $cookies.get("token");
+  
   $scope.filter;
   $scope.question;
   $scope.alternative;
@@ -28,7 +30,7 @@ app.controller("administrationAlternativeController", function($scope, $routePar
   };
 
   $scope.process = function(successMessage) {
-    Question.save($scope.question, $scope.token)
+    Question.save($scope.question, token)
       .then(function(response) {
         $scope.message.success(successMessage);
 

@@ -2,14 +2,16 @@
 
 var app = angular.module("qbApp");
 
-app.controller("administrationUserController", function($scope, User) {
+app.controller("administrationUserController", function($scope, $cookies, User) {
 
+  var token = $cookies.get("token");
+  
   $scope.filter;
   $scope.users;
   $scope.user;
   
   $scope.findAll = function() {
-    User.findAll($scope.token).then(function(response) {
+    User.findAll(token).then(function(response) {
       $scope.users = response.data;
     });
   };
@@ -27,7 +29,7 @@ app.controller("administrationUserController", function($scope, User) {
   };
   
   $scope.save = function() {
-    User.save($scope.user, $scope.token)
+    User.save($scope.user, token)
       .then(function(response) {
         $scope.message.success("User saved successfully!");
 
@@ -43,7 +45,7 @@ app.controller("administrationUserController", function($scope, User) {
   };
 
   $scope.remove = function(user) {
-    User.remove(user._id, $scope.token)
+    User.remove(user._id, token)
       .then(function(response) {
         $scope.message.success("User removed successfully!");
 

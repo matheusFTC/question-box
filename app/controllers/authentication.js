@@ -48,7 +48,6 @@ module.exports = function(app) {
 
         if (decoded.exp <= Date.now()) {
           res.json({
-            success: false,
             message: "Access expired."
           });
         } else {

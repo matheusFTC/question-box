@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module("qbApp", ["ngRoute"]);
+var app = angular.module("qbApp", ["ngRoute", "ngCookies"]);
 
 app.config(function($routeProvider) {
 

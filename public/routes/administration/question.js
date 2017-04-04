@@ -8,8 +8,8 @@ app.config(function($routeProvider) {
     templateUrl: "views/administration/question.html",
     controller: "administrationQuestionController",
     resolve: {
-      validation: function($rootScope, $location) {
-        if (!$rootScope.token) $location.path("/authentication");
+      validation: function($cookies, $location) {
+        if (!$cookies.get("token")) $location.path("/authentication");
       }
     }
   });

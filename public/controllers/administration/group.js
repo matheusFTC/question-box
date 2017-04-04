@@ -2,8 +2,10 @@
 
 var app = angular.module("qbApp");
 
-app.controller("administrationGroupController", function($scope, Group) {
+app.controller("administrationGroupController", function($scope, $cookies, Group) {
 
+  var token = $cookies.get("token");
+  
   $scope.filter;
   $scope.groups;
   $scope.group;
@@ -27,7 +29,7 @@ app.controller("administrationGroupController", function($scope, Group) {
   };
 
   $scope.save = function() {
-    Group.save($scope.group, $scope.token)
+    Group.save($scope.group, token)
       .then(function(response) {
         $scope.message.success("Group saved successfully!");
 
@@ -43,7 +45,7 @@ app.controller("administrationGroupController", function($scope, Group) {
   };
 
   $scope.remove = function(group) {
-    Group.remove(group._id, $scope.token)
+    Group.remove(group._id, token)
       .then(function(response) {
         $scope.message.success("Group removed successfully!");
 
