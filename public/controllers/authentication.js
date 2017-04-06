@@ -2,7 +2,7 @@
 
 var app = angular.module("qbApp");
 
-app.controller("authenticationController", function($rootScope, $scope, $cookies, $location, Authentication) {
+app.controller("authenticationController", function($scope, $cookies, $location, Authentication) {
 
   $scope.username = null;
   $scope.password = null;

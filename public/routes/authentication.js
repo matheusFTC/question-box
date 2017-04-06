@@ -3,9 +3,14 @@
 var app = angular.module("qbApp");
 
 app.config(function($routeProvider) {
-  
+
   $routeProvider.when("/authentication", {
     templateUrl: "views/authentication.html",
-    controller: "authenticationController"
+    controller: "authenticationController",
+    resolve: {
+      clear: function($cookies) {
+        $cookies.put("token", undefined);
+      }
+    }
   });
 });
