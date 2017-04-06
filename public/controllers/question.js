@@ -4,6 +4,8 @@ var app = angular.module("qbApp");
 
 app.controller("questionController", function($scope, $routeParams, Group, Question) {
 
+  const isActive = true;
+
   $scope.group;
   $scope.questions;
   $scope.question;
@@ -22,7 +24,7 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
     .then(function(response) {
       $scope.group = response.data;
 
-      Question.findByGroup($scope.group._id).then(function(response) {
+      Question.findByGroup($scope.group._id, isActive).then(function(response) {
         $scope.questions = response.data;
         $scope.numberOfQuestions = $scope.questions.length;
 

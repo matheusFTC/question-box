@@ -4,8 +4,12 @@ var app = angular.module("qbApp");
 
 app.factory("Group", function($http) {
   return {
-    findAll: function() {
-      return $http.get("/groups");
+    findAll: function(isActive) {
+      if (isActive === undefined || isActive === null) {
+        return $http.get("/groups");
+      } else {
+        return $http.get("/groups?isActive=" + isActive);
+      }
     },
     findById: function(_id) {
       return $http.get("/groups/" + _id);
