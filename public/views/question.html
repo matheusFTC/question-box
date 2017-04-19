@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
-        <h1>{{group.name || 'Something went wrong, try again...'}}</h1>
+        <h1>{{group.name || 'ERROR_LOAD_GROUP' | translate}}</h1>
       </div>
 
       <!-- group-description -->
@@ -13,12 +13,12 @@
             <div class="btn-group btn-group-justified action-options" role="group">
               <div class="btn-group" role="group">
                 <a class="btn btn-default" ng-href="#!/">
-                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> {{'BTN_HOME' | translate}}
                 </a>
               </div>
               <div class="btn-group" role="group" ng-if="group && questions">
                 <button type="button" class="btn btn-default" ng-click="start()">
-                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Start
+                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span> {{'BTN_START' | translate}}
                 </button>
               </div>
             </div>
@@ -39,12 +39,12 @@
             <div class="btn-group btn-group-justified action-options" role="group">
               <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default" ng-click="toPrevious()">
-                  <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Previous
+                  <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> {{'BTN_PREVIOUS' | translate}}
                 </button>
               </div>
               <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default" ng-click="toNext()">
-                  <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Next
+                  <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> {{'BTN_NEXT' | translate}}
                 </button>
               </div>
             </div>
@@ -53,17 +53,17 @@
             <div class="btn-group btn-group-justified action-options" role="group">
               <div class="btn-group" role="group">
                 <a class="btn btn-default" ng-href="#!/">
-                  <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Exit
+                  <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> {{'BTN_EXIT' | translate}}
                 </a>
               </div>
               <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default" ng-click="markForReview()">
-                  <span class="glyphicon glyphicon-check" aria-hidden="true"></span> Review
+                  <span class="glyphicon glyphicon-check" aria-hidden="true"></span> {{'BTN_REVIEW' | translate}}
                 </button>
               </div>
               <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default" ng-click="finalize()" data-toggle="modal" data-target="#finalizeModal">
-                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Finish
+                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{'BTN_FINISH' | translate}}
                 </button>
               </div>
             </div>
@@ -105,10 +105,10 @@
         </div>
         <div class="btn-group" role="group">
           <a class="btn btn-default" ng-href="#!/">
-            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Exit
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> {{'BTN_EXIT' | translate}}
           </a>
           <button type="button" class="btn btn-default" ng-click="reset()">
-            <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Remake
+            <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> {{'BTN_REMAKE' | translate}}
           </button>
         </div>
       </div>
@@ -132,7 +132,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="checkResult()">
-          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Finish
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{'BTN_FINISH' | translate}}
         </button>
       </div>
     </div>

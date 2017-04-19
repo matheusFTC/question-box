@@ -9,7 +9,7 @@
   <link href="assets/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
-  <title>Question Box</title>
+  <title>{{ 'TITLE' | translate }}</title>
 
   <style>
     body { 
@@ -33,11 +33,18 @@
     }
     
     div.crud-options, div.action-options {
-      margin-top: 20px;
+      margin-top: 10px;
+      margin-bottom: 30px;
     }
     
     div.no-administration {
       margin-top: -70px;
+    }
+    
+    div#translate-container {
+      position: fixed;
+      right: 10px;
+      bottom: 10px;
     }
   </style>
 </head>
@@ -46,12 +53,14 @@
   <ng-view></ng-view>
 
   <ng-include src="'views/message.html'"></ng-include>
+  <ng-include src="'views/translate.html'"></ng-include>
 
   <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="assets/vendor/angular/angular.js"></script>
   <script src="assets/vendor/angular-cookies/angular-cookies.js"></script>
   <script src="assets/vendor/angular-route/angular-route.js"></script>
+  <script src="assets/vendor/angular-translate/angular-translate.js"></script>
   <script src="app.js"></script>
   <script src="services/authentication.js"></script>
   <script src="services/user.js"></script>
