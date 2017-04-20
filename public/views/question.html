@@ -75,41 +75,49 @@
       <!-- result -->
       <div ng-show="showResult">
         <header>
-          <h2>Your result:</h2>
+          <h2>{{'YOUR_RESULT' | translate}}:</h2>
         </header>
         <div class="row text-center" style="margin: 40px 0">
           <div class="col-md-3">
             <header>
               <h3>{{numberOfQuestionsAnswered}}</h3>
             </header>
-            <p><strong>Questions answered</strong></p>
+            <p><strong>{{'ANSWERED_QUESTIONS' | translate}}</strong></p>
           </div>
           <div class="col-md-3">
             <header>
               <h3>{{numberOfQuestionsNotAnswered}}</h3>
             </header>
-            <p><strong>Unanswered questions</strong></p>
+            <p><strong>{{'UNANSWERED_QUESTIONS' | translate}}</strong></p>
           </div>
           <div class="col-md-3">
             <header>
               <h3>{{numberOfHits}}</h3>
             </header>
-            <p><strong>Hits</strong></p>
+            <p><strong>{{'HITS' | translate}}</strong></p>
           </div>
           <div class="col-md-3">
             <header>
               <h3>{{numberOfErrors}}</h3>
             </header>
-            <p><strong>Errors</strong></p>
+            <p><strong>{{'ERRORS' | translate}}</strong></p>
           </div>
         </div>
-        <div class="btn-group" role="group">
-          <a class="btn btn-default" ng-href="#!/">
-            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> {{'BTN_EXIT' | translate}}
-          </a>
-          <button type="button" class="btn btn-default" ng-click="reset()">
-            <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> {{'BTN_REMAKE' | translate}}
-          </button>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="btn-group btn-group-justified action-options" role="group">
+              <div class="btn-group" role="group">
+                <a class="btn btn-default" ng-href="#!/">
+                  <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> {{'BTN_EXIT' | translate}}
+                </a>
+              </div>
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default" ng-click="reset()">
+                  <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> {{'BTN_REMAKE' | translate}}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <!-- /result -->
@@ -125,10 +133,10 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h3 class="modal-title" id="finalizeModalTitle">Do you really want to finish?</h3>
+        <h3 class="modal-title" id="finalizeModalTitle">{{'FINALIZE_MODAL_TITLE' | translate}}</h3>
       </div>
       <div class="modal-body">
-        <p>Make sure all questions have been answered before finalizing.</p>
+        <p>{{'FINALIZE_MODAL_BODY' | translate}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="checkResult()">

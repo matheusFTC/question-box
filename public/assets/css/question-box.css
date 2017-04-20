@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+body {
+  padding-top: 70px;
+}
+
+table.table {
+  margin-top: 20px;
+}
+
+table.table button.btn,
+table.table a.btn {
+  margin-top: 5px;
+}
+
+div#message {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 2222;
+  margin-left: 10px;
+}
+
+div.crud-options,
+div.action-options {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+div.no-administration {
+  margin-top: -70px;
+}
+
+div#translate-container {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+}

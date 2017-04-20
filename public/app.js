@@ -7,8 +7,9 @@ app.config(function($routeProvider, $translateProvider) {
   $routeProvider.otherwise({
     redirectTo: "/"
   });
-  
+
   $translateProvider.translations("en", {
+    "ANSWERED_QUESTIONS": "Answered questions",
     "BTN_EXIT": "Exit",
     "BTN_FINISH": "Finish",
     "BTN_HOME": "Home",
@@ -18,13 +19,20 @@ app.config(function($routeProvider, $translateProvider) {
     "BTN_REVIEW": "Review",
     "BTN_START": "Start",
     "ERROR_LOAD_GROUP": "Something went wrong, try again...",
-    "INTERNAL_SERVER_ERROR": "This action could not be taken.",
+    "ERRORS": "Errors",
+    "FINALIZE_MODAL_BODY": "Make sure all questions have been answered before finalizing.",
+    "FINALIZE_MODAL_TITLE": "Do you really want to finish?",
     "GROUP_FILTER": "Do you look for which group?",
+    "HITS": "Hits",
+    "INTERNAL_SERVER_ERROR": "This action could not be taken.",
     "TITLE": "Question Box",
-    "UNAUTHORIZED": "You are not authorized to perform this action."
+    "UNANSWERED_QUESTIONS": "Unanswered questions",
+    "UNAUTHORIZED": "You are not authorized to perform this action.",
+    "YOUR_RESULT": "Your result"
   });
- 
+
   $translateProvider.translations("pt", {
+    "ANSWERED_QUESTIONS": "Questões respondidas",
     "BTN_EXIT": "Sair",
     "BTN_FINISH": "Finalizar",
     "BTN_HOME": "Início",
@@ -34,12 +42,18 @@ app.config(function($routeProvider, $translateProvider) {
     "BTN_REVIEW": "Revisar",
     "BTN_START": "Iniciar",
     "ERROR_LOAD_GROUP": "Algo está errado, tente outra vez...",
-    "INTERNAL_SERVER_ERROR": "Não foi possível concluir esta ação.",
+    "ERRORS": "Erros",
+    "FINALIZE_MODAL_BODY": "Verifique se todas as perguntas foram respondidas antes de finalizar.",
+    "FINALIZE_MODAL_TITLE": "Deseja realmente finalizar?",
     "GROUP_FILTER": "Você procura por qual grupo?",
+    "HITS": "Acertos",
+    "INTERNAL_SERVER_ERROR": "Não foi possível concluir esta ação.",
     "TITLE": "Caixa de Questões",
-    "UNAUTHORIZED": "Você não possui permissão para esta ação."
+    "UNANSWERED_QUESTIONS": "Questões não respondidas",
+    "UNAUTHORIZED": "Você não possui permissão para esta ação.",
+    "YOUR_RESULT": "Seu resultado"
   });
- 
+
   $translateProvider.preferredLanguage("pt");
 });
 
@@ -92,7 +106,7 @@ app.run(function($rootScope, $translate) {
       this.isError = false;
     }
   };
-  
+
   $rootScope.language = {
     change: function(key) {
       $translate.use(key);

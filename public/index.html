@@ -8,52 +8,7 @@
 
   <link href="assets/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-
-  <title>{{ 'TITLE' | translate }}</title>
-
-  <style>
-    body { 
-      padding-top: 70px; 
-    }
-    
-    table.table {
-      margin-top: 20px;
-    }
-    
-    table.table button.btn, table.table a.btn {
-      margin-top: 5px;
-    }
-    
-    div#message {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 2222;
-      margin-left: 10px;
-    }
-    
-    div.crud-options, div.action-options {
-      margin-top: 10px;
-      margin-bottom: 30px;
-    }
-    
-    div.no-administration {
-      margin-top: -70px;
-    }
-    
-    div#translate-container {
-      position: fixed;
-      right: 10px;
-      bottom: 10px;
-    }
-  </style>
-</head>
-
-<body>
-  <ng-view></ng-view>
-
-  <ng-include src="'views/message.html'"></ng-include>
-  <ng-include src="'views/translate.html'"></ng-include>
+  <link href="assets/css/question-box.css" rel="stylesheet">
 
   <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -80,6 +35,15 @@
   <script src="routes/administration/alternative.js"></script>
   <script src="routes/group.js"></script>
   <script src="routes/question.js"></script>
+
+  <title>{{'TITLE' | translate}}</title>
+</head>
+
+<body>
+  <ng-view></ng-view>
+
+  <ng-include src="'views/message.html'"></ng-include>
+  <ng-include src="'views/translate.html'"></ng-include>
 </body>
 
 </html>
