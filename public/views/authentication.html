@@ -2,20 +2,20 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <div class="page-header">
-        <h1>Authentication</h1>
+        <h1>{{'AUTHENTICATION' | translate}}</h1>
       </div>
       <form>
         <div class="form-group">
-          <label for="inputUsername">Username</label>
-          <input id="inputUsername" type="text" class="form-control" placeholder="Username" ng-model="username">
+          <label for="inputUsername">{{'USERNAME' | translate}}</label>
+          <input id="inputUsername" type="text" class="form-control" placeholder="{{'USERNAME' | translate}}" ng-model="username">
         </div>
         <div class="form-group">
-          <label for="inputPassword">Password</label>
-          <input id="inputPassword" type="password" class="form-control" placeholder="Password" ng-model="password">
+          <label for="inputPassword">{{'PASSWORD' | translate}}</label>
+          <input id="inputPassword" type="password" class="form-control" placeholder="{{'PASSWORD' | translate}}" ng-model="password">
         </div>
         <div class="form-group">
           <button type="button" class="btn btn-default" ng-click="authenticate()">
-            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log In
+            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> {{'LOG_IN' | translate}}
           </button>
         </div>
       </form>

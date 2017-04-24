@@ -10,6 +10,7 @@ app.config(function($routeProvider, $translateProvider) {
 
   $translateProvider.translations("en", {
     "ANSWERED_QUESTIONS": "Answered questions",
+    "AUTHENTICATION": "Authentication",
     "BTN_EXIT": "Exit",
     "BTN_FINISH": "Finish",
     "BTN_HOME": "Home",
@@ -17,22 +18,35 @@ app.config(function($routeProvider, $translateProvider) {
     "BTN_NEXT": "Next",
     "BTN_REMAKE": "Remake",
     "BTN_REVIEW": "Review",
+    "BTN_SAVE": "Save",
     "BTN_START": "Start",
     "ERROR_LOAD_GROUP": "Something went wrong, try again...",
     "ERRORS": "Errors",
     "FINALIZE_MODAL_BODY": "Make sure all questions have been answered before finalizing.",
     "FINALIZE_MODAL_TITLE": "Do you really want to finish?",
+    "FULLNAME": "Fullname",
     "GROUP_FILTER": "Do you look for which group?",
+    "GROUPS": "Groups",
     "HITS": "Hits",
     "INTERNAL_SERVER_ERROR": "This action could not be taken.",
-    "TITLE": "Question Box",
+    "LOG_IN": "Log In",
+    "LOG_OUT": "Log Out",
+    "PASSWORD": "Password",
     "UNANSWERED_QUESTIONS": "Unanswered questions",
     "UNAUTHORIZED": "You are not authorized to perform this action.",
+    "REQUIRED_USERNAME_PASSWORD": "Enter the username and password.",
+    "UNABLE_AUTHENTICATE": "We were unable to authenticate.",
+    "USER": "User",
+    "USER_FILTER": "Do you look for which user?",
+    "USERNAME": "Username",
+    "USERNAME_PASSWORD_INVALID": "Username or password is invalid!",
+    "USERS": "Users",
     "YOUR_RESULT": "Your result"
   });
 
   $translateProvider.translations("pt", {
     "ANSWERED_QUESTIONS": "Questões respondidas",
+    "AUTHENTICATION": "Autenticação",
     "BTN_EXIT": "Sair",
     "BTN_FINISH": "Finalizar",
     "BTN_HOME": "Início",
@@ -40,21 +54,34 @@ app.config(function($routeProvider, $translateProvider) {
     "BTN_NEXT": "Próximo",
     "BTN_REMAKE": "Refazer",
     "BTN_REVIEW": "Revisar",
+    "BTN_SAVE": "Salvar",
     "BTN_START": "Iniciar",
     "ERROR_LOAD_GROUP": "Algo está errado, tente outra vez...",
     "ERRORS": "Erros",
     "FINALIZE_MODAL_BODY": "Verifique se todas as perguntas foram respondidas antes de finalizar.",
     "FINALIZE_MODAL_TITLE": "Deseja realmente finalizar?",
+    "FULLNAME": "Nome Completo",
     "GROUP_FILTER": "Você procura por qual grupo?",
+    "GROUPS": "Grupos",
     "HITS": "Acertos",
     "INTERNAL_SERVER_ERROR": "Não foi possível concluir esta ação.",
-    "TITLE": "Caixa de Questões",
+    "LOG_IN": "Entrar",
+    "LOG_OUT": "Sair",
+    "PASSWORD": "Senha",
     "UNANSWERED_QUESTIONS": "Questões não respondidas",
     "UNAUTHORIZED": "Você não possui permissão para esta ação.",
+    "REQUIRED_USERNAME_PASSWORD": "Informe o nome de usuário e senha.",
+    "UNABLE_AUTHENTICATE": "Não foi possível autenticar.",
+    "USER": "Usuário",
+    "USER_FILTER": "Você procura por qual usuário?",
+    "USERNAME": "Nome de Usuário",
+    "USERNAME_PASSWORD_INVALID": "Usuário e/ou senha inválido(s)!",
+    "USERS": "Usuários",
     "YOUR_RESULT": "Seu resultado"
   });
 
   $translateProvider.preferredLanguage("pt");
+  $translateProvider.useSanitizeValueStrategy("escape");
 });
 
 app.run(function($rootScope, $translate) {
@@ -81,7 +108,9 @@ app.run(function($rootScope, $translate) {
       if (text) {
         this.text = text;
       } else {
-        this.text = $translate("INTERNAL_SERVER_ERROR");
+        $translate("INTERNAL_SERVER_ERROR").then(function(translation) {
+          this.text = translation;
+        });
       }
 
       this.isError = true;
@@ -92,7 +121,9 @@ app.run(function($rootScope, $translate) {
       if (text) {
         this.text = text;
       } else {
-        this.text = $translate("UNAUTHORIZED");
+        $translate("UNAUTHORIZED").then(function(translation) {
+          this.text = translation;
+        });
       }
 
       this.isError = true;

@@ -2,14 +2,16 @@
 
 var app = angular.module("qbApp");
 
-app.controller("authenticationController", function($scope, $cookies, $location, Authentication) {
+app.controller("authenticationController", function($scope, $cookies, $location, $translate, Authentication) {
 
   $scope.username = null;
   $scope.password = null;
 
   $scope.authenticate = function() {
     if ($scope.username === null || $scope.password === null || $scope.username.trim() === "" || $scope.password.trim() === "") {
-      $scope.message.error("Enter the username and password.");
+      $translate("REQUIRED_USERNAME_PASSWORD").then(function(translation) {
+        $scope.message.error(translation);
+      });
     } else {
       Authentication.authenticate($scope.username, $scope.password)
         .then(function(response) {
@@ -22,9 +24,13 @@ app.controller("authenticationController", function($scope, $cookies, $location,
           $scope.password = null;
 
           if (err.status === 401) {
-            $scope.message.error("Username or password is invalid!");
+            $translate("USERNAME_PASSWORD_INVALID").then(function(translation) {
+              $scope.message.error(translation);
+            });
           } else {
-            $scope.message.error("We were unable to authenticate.");
+            $translate("UNABLE_AUTHENTICATE").then(function(translation) {
+              $scope.message.error(translation);
+            });
           }
         });
     }
