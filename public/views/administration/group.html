@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
-        <h1>Groups</h1>
+        <h1>{{'GROUPS' | translate}}</h1>
       </div>
       <div class="row">
         <div class="col-md-2 crud-options">
@@ -22,7 +22,7 @@
                 <div class="input-group-addon">
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Do you look for which group?" ng-model="filter">
+                <input type="text" class="form-control" placeholder="{{'GROUP_FILTER' | translate}}" ng-model="filter">
               </div>
             </div>
           </form>
@@ -53,7 +53,7 @@
               {{group.description}}
             </td>
             <td>
-              {{group.isActive ? 'Yes' : 'No'}}
+              {{group.isActive ? 'YES' : 'NO' | translate}}
             </td>
             <td class="text-right">
               <a class="btn btn-default" role="button" ng-href="#!/administration/groups/{{group._id}}/questions">
@@ -83,7 +83,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h3 class="modal-title" id="modalTitle">Group</h3>
+        <h3 class="modal-title" id="modalTitle">{{'GROUP' | translate}}</h3>
       </div>
       <div class="modal-body">
         <form>
@@ -97,7 +97,7 @@
           </div>
           <div class="checkbox">
             <label for="inputIsActive">
-              <input type="checkbox" id="inputIsActive" ng-model="group.isActive"> Active
+              <input type="checkbox" id="inputIsActive" ng-model="group.isActive"> {{'ACTIVE' | translate}}
             </label>
           </div>
         </form>

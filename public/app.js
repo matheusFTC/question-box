@@ -9,6 +9,7 @@ app.config(function($routeProvider, $translateProvider) {
   });
 
   $translateProvider.translations("en", {
+    "ACTIVE": "Active",
     "ANSWERED_QUESTIONS": "Answered questions",
     "AUTHENTICATION": "Authentication",
     "BTN_EXIT": "Exit",
@@ -25,6 +26,7 @@ app.config(function($routeProvider, $translateProvider) {
     "FINALIZE_MODAL_BODY": "Make sure all questions have been answered before finalizing.",
     "FINALIZE_MODAL_TITLE": "Do you really want to finish?",
     "FULLNAME": "Fullname",
+    "GROUP": "Group",
     "GROUP_FILTER": "Do you look for which group?",
     "GROUP_NOT_FOUND": "Group not found.",
     "GROUP_NOT_LOADED": "Group not loaded.",
@@ -33,6 +35,7 @@ app.config(function($routeProvider, $translateProvider) {
     "INTERNAL_SERVER_ERROR": "This action could not be taken.",
     "LOG_IN": "Log In",
     "LOG_OUT": "Log Out",
+    "NO": "No",
     "PASSWORD": "Password",
     "UNANSWERED_QUESTIONS": "Unanswered questions",
     "UNAUTHORIZED": "You are not authorized to perform this action.",
@@ -43,10 +46,12 @@ app.config(function($routeProvider, $translateProvider) {
     "USERNAME": "Username",
     "USERNAME_PASSWORD_INVALID": "Username or password is invalid!",
     "USERS": "Users",
+    "YES": "Yes",
     "YOUR_RESULT": "Your result"
   });
 
   $translateProvider.translations("pt", {
+    "ACTIVE": "Ativo",
     "ANSWERED_QUESTIONS": "Questões respondidas",
     "AUTHENTICATION": "Autenticação",
     "BTN_EXIT": "Sair",
@@ -63,6 +68,7 @@ app.config(function($routeProvider, $translateProvider) {
     "FINALIZE_MODAL_BODY": "Verifique se todas as perguntas foram respondidas antes de finalizar.",
     "FINALIZE_MODAL_TITLE": "Deseja realmente finalizar?",
     "FULLNAME": "Nome Completo",
+    "GROUP": "Grupo",
     "GROUP_FILTER": "Você procura por qual grupo?",
     "GROUP_NOT_FOUND": "Grupo não encontrado.",
     "GROUP_NOT_LOADED": "Grupo não carregado.",
@@ -71,6 +77,7 @@ app.config(function($routeProvider, $translateProvider) {
     "INTERNAL_SERVER_ERROR": "Não foi possível concluir esta ação.",
     "LOG_IN": "Entrar",
     "LOG_OUT": "Sair",
+    "NO": "Não",
     "PASSWORD": "Senha",
     "UNANSWERED_QUESTIONS": "Questões não respondidas",
     "UNAUTHORIZED": "Você não possui permissão para esta ação.",
@@ -81,6 +88,7 @@ app.config(function($routeProvider, $translateProvider) {
     "USERNAME": "Nome de Usuário",
     "USERNAME_PASSWORD_INVALID": "Usuário e/ou senha inválido(s)!",
     "USERS": "Usuários",
+    "YES": "Sim",
     "YOUR_RESULT": "Seu resultado"
   });
 
