@@ -8,7 +8,7 @@ app.controller("authenticationController", function($scope, $cookies, $location,
   $scope.password = null;
 
   $scope.authenticate = function() {
-    if ($scope.username === null || $scope.password === null || $scope.username.trim() === "" || $scope.password.trim() === "") {
+    if (!$scope.username || !$scope.password || $scope.username.trim() === "" || $scope.password.trim() === "") {
       $translate("REQUIRED_USERNAME_PASSWORD").then(function(translation) {
         $scope.message.error(translation);
       });

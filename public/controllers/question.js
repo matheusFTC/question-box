@@ -2,7 +2,7 @@
 
 var app = angular.module("qbApp");
 
-app.controller("questionController", function($scope, $routeParams, Group, Question) {
+app.controller("questionController", function($scope, $routeParams, $translate, Group, Question) {
 
   const isActive = true;
 
@@ -45,10 +45,14 @@ app.controller("questionController", function($scope, $routeParams, Group, Quest
     .catch(function(err) {
       switch (err.status) {
         case 404:
-          $scope.message.error("Group not found.");
+          $translate("GROUP_NOT_FOUND").then(function(translation) {
+            $scope.message.error(translation);
+          });
           break;
         case 500:
-          $scope.message.error("Group not loaded.");
+          $translate("GROUP_NOT_LOADED").then(function(translation) {
+            $scope.message.error(translation);
+          });
           break;
       }
     });
