@@ -4,9 +4,9 @@
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
-        <h1>Alternatives</h1>
+        <h1>{{'ALTERNATIVES' | translate}}</h1>
+        <h3><small>{{'QUESTION' | translate}}: {{question.enunciation}}</small></h3>
       </div>
-      <h3><small>Question: {{question.enunciation}}</small></h3>
       <div class="row">
         <div class="col-md-2 crud-options">
           <div class="btn-group" role="group">
@@ -23,7 +23,7 @@
                 <div class="input-group-addon">
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Do you look for which alternative?" ng-model="filter">
+                <input type="text" class="form-control" placeholder="{{'ALTERNATIVE_FILTER' | translate}}" ng-model="filter">
               </div>
             </div>
           </form>
@@ -35,8 +35,8 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Answer</th>
-            <th>Correct</th>
+            <th>{{'ANSWER' | translate}}</th>
+            <th>{{'CORRECT' | translate}}</th>
             <th></th>
           </tr>
         </thead>
@@ -76,17 +76,17 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h3 class="modal-title" id="modalTitle">Alternative</h3>
+        <h3 class="modal-title" id="modalTitle">{{'ALTERNATIVE' | translate}}</h3>
       </div>
       <div class="modal-body">
         <form>
           <div class="form-group" ng-class="{'has-error': !alternative.answer}">
-            <label class="control-label" for="inputAnswer">Answer</label>
+            <label class="control-label" for="inputAnswer">{{'ANSWER' | translate}}</label>
             <textarea class="form-control" rows="6" id="inputAnswer" placeholder="Answer" ng-model="alternative.answer"></textarea>
           </div>
           <div class="checkbox">
             <label for="inputIsCorrect">
-              <input type="checkbox" id="inputIsCorrect" ng-model="alternative.isCorrect"> Correct
+              <input type="checkbox" id="inputIsCorrect" ng-model="alternative.isCorrect"> {{'CORRECT' | translate}}
             </label>
           </div>
         </form>

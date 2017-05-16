@@ -4,9 +4,9 @@
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
-        <h1>Questions</h1>
+        <h1>{{'QUESTIONS' | translate}}</h1>
+        <h3><small>{{'GROUP' | translate}}: {{group.name}}</small></h3>
       </div>
-      <h3><small>{{'GROUP' | translate}}: {{group.name}}</small></h3>
       <div class="row">
         <div class="col-md-2 crud-options">
           <div class="btn-group" role="group">
@@ -23,7 +23,7 @@
                 <div class="input-group-addon">
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Do you look for which question?" ng-model="filter">
+                <input type="text" class="form-control" placeholder="{{'QUESTION_FILTER' | translate}}" ng-model="filter">
               </div>
             </div>
           </form>
@@ -35,7 +35,7 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Enunciation</th>
+            <th>{{'ENUNCIATION' | translate}}</th>
             <th>{{'ACTIVE' | translate}}</th>
             <th></th>
           </tr>
@@ -79,12 +79,12 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h3 class="modal-title" id="modalTitle">Question</h3>
+        <h3 class="modal-title" id="modalTitle">{{'QUESTION' | translate}}</h3>
       </div>
       <div class="modal-body">
         <form>
           <div class="form-group" ng-class="{'has-error': !question.enunciation}">
-            <label class="control-label" for="inputEnunciation">Enunciation</label>
+            <label class="control-label" for="inputEnunciation">{{'ENUNCIATION' | translate}}</label>
             <textarea class="form-control" rows="6" id="inputEnunciation" placeholder="Enunciation" ng-model="question.enunciation"></textarea>
           </div>
           <div class="checkbox">
